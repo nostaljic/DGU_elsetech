@@ -47,6 +47,7 @@ class _CustomHeaderState extends State<CustomHeader> {
             ),
           ],
         ),
+        body: widget.body,
         endDrawer: ClipRRect(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
