@@ -47,7 +47,12 @@ class _CustomHeaderState extends State<CustomHeader> {
             ),
           ],
         ),
-        body: widget.body,
+        body: Stack(
+          children: <Widget>[
+            Background(),
+            widget.body,
+          ],
+        ),
         endDrawer: ClipRRect(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
@@ -74,7 +79,16 @@ class _CustomHeaderState extends State<CustomHeader> {
                       ],
                     ),
                   ),
-                  Container(),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(1, 1, 0, 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      //crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text('서비스'),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

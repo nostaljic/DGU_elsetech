@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: Home(),
+
+      home: CustomHeader(body: Container()),
+
     );
   }
 }
