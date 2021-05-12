@@ -21,9 +21,53 @@ class _CustomHeaderState extends State<CustomHeader> {
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+    double width = screenSize.width;
+    double height = screenSize.height;
+
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: themeBlue,
-      endDrawer: Drawer(),
+      appBar: new AppBar(
+        backgroundColor: themeBlue,
+        elevation: 0,
+        actions: [
+          Builder(
+            builder: (context) => IconButton(
+              icon: Icon(Icons.menu_open,
+                  color: Color.fromRGBO(199, 221, 235, 1), size: 30),
+              onPressed: () => Scaffold.of(context).openEndDrawer(),
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            ),
+          ),
+        ],
+      ),
+      endDrawer: ClipRRect(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
+        child: Drawer(
+          child: Container(
+            height: height,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  width: width,
+                  height: height / 5,
+                  color: themeBlue,
+                  child: Builder(
+                    builder: (context) => IconButton(
+                      icon: Image.asset('assets/menu_close.svg'),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
