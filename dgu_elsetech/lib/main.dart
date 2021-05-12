@@ -2,6 +2,7 @@
 import 'package:dgu_elsetech/widget/header.dart';
 import 'package:flutter/material.dart';
 import 'package:dgu_elsetech/widget/main_loading.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: MainLoading(),
+      home: CustomHeader(body: null),
     );
   }
 }
