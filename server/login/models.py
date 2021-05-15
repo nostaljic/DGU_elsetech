@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Member(models.Model):
     name = models.CharField(max_length=32, verbose_name='성명')
-    email = models.CharField(max_length=32, unique=True, verbose_name='이메일')
+    email = models.EmailField(max_length=254, unique=True, verbose_name='이메일')
     id = models.CharField(max_length=32, unique=True, verbose_name='아이디', primary_key=True)
     pw = models.CharField(max_length=32, verbose_name='비밀번호')
 
