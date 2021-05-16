@@ -3,6 +3,7 @@ import 'package:dgu_elsetech/widget/header.dart';
 import 'package:flutter/material.dart';
 import 'package:dgu_elsetech/widget/main_loading.dart';
 import 'package:dgu_elsetech/screen/home.dart';
+import 'package:dgu_elsetech/screen/fee_information.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
 
-      home: CustomHeader(body: Container()),
+      home: FeeInfo(),
 
     );
   }
