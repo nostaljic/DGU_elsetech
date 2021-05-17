@@ -1,4 +1,5 @@
 import 'package:dgu_elsetech/style/color.dart';
+import 'package:dgu_elsetech/style/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -80,13 +81,100 @@ class _CustomHeaderState extends State<CustomHeader> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(1, 1, 0, 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      //crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text('서비스'),
-                      ],
+                    width: width,
+                    padding: EdgeInsets.fromLTRB(
+                        width * 0.05, width * 0.1, width * 0.05, 0),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text('서비스', style: drawerBold),
+                          Divider(
+                            color: Colors.black,
+                            thickness: 1,
+                          ),
+                          //주변 지역 정보
+                          ListTile(
+                            title: Row(children: <Widget>[
+                              Text("주변 지역 정보", style: drawerBold),
+                              Icon(Icons.map, color: Colors.black, size: 25),
+                            ]),
+                            subtitle:
+                                Text("지도에서 수질 정보를 받아보세요", style: drawerBlue),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.black, width: 0.8),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            onTap: () => print("기능구현필요"),
+                          ),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          //필터 분석 요청
+                          ListTile(
+                            title: Row(children: <Widget>[
+                              Text("필터 분석 요청", style: drawerBold),
+                              Icon(Icons.science_outlined,
+                                  color: Colors.black, size: 25),
+                            ]),
+                            subtitle:
+                                Text("최고의 기술로 안심하고 물을 드세요", style: drawerBlue),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.black, width: 0.8),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            onTap: () => print("기능구현필요"),
+                          ),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          //필터 분석 보고서
+                          ListTile(
+                            title: Row(children: <Widget>[
+                              Text("필터 분석 보고서", style: drawerBold),
+                              Icon(Icons.description_outlined,
+                                  color: Colors.black, size: 25),
+                            ]),
+                            subtitle: Text("분석 서비스의 결과 보고서를 받아보세요",
+                                style: drawerBlue),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.black, width: 0.8),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            onTap: () => print("기능구현필요"),
+                          ),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          //요금 안내
+                          ListTile(
+                            title: Row(children: <Widget>[
+                              Text("요금 안내", style: drawerBold),
+                              Icon(Icons.payment,
+                                  color: Colors.black, size: 25),
+                            ]),
+                            subtitle: Text("서비스를 통해 더 많은 정보를 받아보세요",
+                                style: drawerBlue),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.black, width: 0.8),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            onTap: () => print("기능구현필요"),
+                          ),
+
+                          Padding(
+                            padding: EdgeInsets.only(bottom: width * 0.1),
+                          ),
+                          Text("개인 설정", style: drawerBold),
+                          Divider(
+                            color: Colors.black,
+                            thickness: 1,
+                          ),
+                          _loginLogoutWidget('', height),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -97,4 +185,43 @@ class _CustomHeaderState extends State<CustomHeader> {
       ),
     );
   }
+}
+
+Widget _loginLogoutWidget(String auth, double height) {
+  return Container(
+    height: height * 0.12,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        Text(auth == '' ? "지금 로그인 하고 더 많은 정보를 받아보세요" : "", style: drawerBlue),
+        Expanded(child: Container()),
+        Row(
+          children: <Widget>[
+            Expanded(child: Container()),
+            TextButton(
+                onPressed: () {}, //기능 구현 필요,
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        Color.fromRGBO(208, 233, 251, 1)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    SizedBox(width: 18),
+                    Text(auth == '' ? "로그인" : "로그아웃", style: drawerBlue),
+                    SizedBox(width: 10),
+                    Icon(auth == '' ? Icons.login : Icons.logout,
+                        color: Color.fromRGBO(0, 60, 255, 1)),
+                    SizedBox(width: 18),
+                  ],
+                ))
+          ],
+        )
+      ],
+    ),
+  );
 }
