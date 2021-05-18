@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   google_maps_flutter: ^0.5.11
+  geolocator: ^6.0.0
+  location: ^3.0.0
   #flutter_svg: ^0.20.0-nullsafety.3
 dependency_overrides:
   flutter_svg: ^0.19.3

@@ -10,9 +10,7 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
-            <!--             구글 맵 API 설정             -->
-            <meta-data android:name="com.google.android.geo.API_KEY"
-                android:value="api 키 넣는 위치"/>
+
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
@@ -37,6 +35,8 @@
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+       <!--             구글 맵 API 설정             -->
+       <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC0bf3VgRzYcJzzuZdJQi3VtuLgL8W9UHY"/>
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
