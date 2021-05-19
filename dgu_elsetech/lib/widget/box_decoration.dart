@@ -32,7 +32,9 @@ class _CustomedBoxState extends State<CustomedBox> {
           bottomRight: Radius.circular(30.0),
         ),
       ),
-      child: widget.child,
+        child:widget.child
+
+
     );
   }
 }
