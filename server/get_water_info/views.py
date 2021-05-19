@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from .models import AnalysisData
+from django.core import serializers
 
 NEW_FILE_PATH = "get_water_info\\newData"
 OLD_FILE_PATH = "get_water_info\\oldData"
@@ -50,8 +51,17 @@ class InfoView(View):
             data = json.loads(request.body)
             sql = data['sql']
             result = AnalysisData.objects.raw(sql)
-            print(result)
-            return HttpResponse(status=200)
+
+            res = {}
+            idx = 0
+            for obj in result:
+                row_name = 'data' + str(idx)
+                res[row_name] = {}
+                res[row_name]['name'] = obj.name
+                res[row_name]['email'] = obj.email
+                res[row_name]['phone'] = obj.phone
+                idx += 1
+            return JsonResponse(res, safe=False)
         except KeyError as e:
             print("KeyError 발생", e)
             return JsonResponse(
