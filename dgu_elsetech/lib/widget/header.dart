@@ -1,3 +1,4 @@
+import 'package:dgu_elsetech/route.dart';
 import 'package:dgu_elsetech/style/color.dart';
 import 'package:dgu_elsetech/style/typography.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +108,12 @@ class _CustomHeaderState extends State<CustomHeader> {
                               side: BorderSide(color: Colors.black, width: 0.8),
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            onTap: () => print("기능구현필요"),
+                            onTap: () {
+                              Navigator.popUntil(
+                                  context,
+                                  ModalRoute.withName(
+                                      Navigator.defaultRouteName));
+                            },
                           ),
                           SizedBox(
                             height: height * 0.01,
@@ -125,7 +131,13 @@ class _CustomHeaderState extends State<CustomHeader> {
                               side: BorderSide(color: Colors.black, width: 0.8),
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            onTap: () => print("기능구현필요"),
+                            onTap: () {
+                              Navigator.popUntil(
+                                  context,
+                                  ModalRoute.withName(
+                                      Navigator.defaultRouteName));
+                              Navigator.pushNamed(context, Routes.request);
+                            },
                           ),
                           SizedBox(
                             height: height * 0.01,
@@ -143,7 +155,13 @@ class _CustomHeaderState extends State<CustomHeader> {
                               side: BorderSide(color: Colors.black, width: 0.8),
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            onTap: () => print("기능구현필요"),
+                            onTap: () {
+                              Navigator.popUntil(
+                                  context,
+                                  ModalRoute.withName(
+                                      Navigator.defaultRouteName));
+                              Navigator.pushNamed(context, Routes.analysis);
+                            },
                           ),
                           SizedBox(
                             height: height * 0.01,
@@ -161,7 +179,13 @@ class _CustomHeaderState extends State<CustomHeader> {
                               side: BorderSide(color: Colors.black, width: 0.8),
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            onTap: () => print("기능구현필요"),
+                            onTap: () {
+                              Navigator.popUntil(
+                                  context,
+                                  ModalRoute.withName(
+                                      Navigator.defaultRouteName));
+                              Navigator.pushNamed(context, Routes.fee);
+                            },
                           ),
 
                           Padding(
@@ -172,7 +196,7 @@ class _CustomHeaderState extends State<CustomHeader> {
                             color: Colors.black,
                             thickness: 1,
                           ),
-                          _loginLogoutWidget('', height),
+                          _loginLogoutWidget(context, '', height),
                         ],
                       ),
                     ),
@@ -187,7 +211,7 @@ class _CustomHeaderState extends State<CustomHeader> {
   }
 }
 
-Widget _loginLogoutWidget(String auth, double height) {
+Widget _loginLogoutWidget(BuildContext context, String auth, double height) {
   return Container(
     height: height * 0.12,
     child: Column(
