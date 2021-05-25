@@ -14,11 +14,14 @@ class MainLoading extends StatelessWidget {
         children: [
           Background()
           ,Container(
-            alignment: AlignmentDirectional.center,
-            child: SizedBox(
-              width: size.width*0.5,
-              child: Image.asset("assets/elsetech_logo.png"),
+            alignment: AlignmentDirectional.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: size.height*0.05),
+              child: SizedBox(
+                width: size.width*0.5,
+                child: Image.asset("assets/elsetech_logo.png"),
     ),
+            ),
           ),
         ],
       ),
