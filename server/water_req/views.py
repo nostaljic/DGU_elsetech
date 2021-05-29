@@ -27,6 +27,7 @@ class AnalysisRequestView(View):
 
             location = data['location']
             water_model = data['water_model']
+            company_name = data['company_name']
             num_people = data['num_people']
             usage = data['usage']
 
@@ -49,6 +50,7 @@ class AnalysisRequestView(View):
             request_date=request_date,
             location=location,
             water_model=water_model,
+            company_name=company_name,
             start_date=start_date,
             end_date=end_date,
             num_people=num_people,

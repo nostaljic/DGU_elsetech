@@ -6,7 +6,7 @@ from water_req.models import AnalysisRequest
 
 
 class AnalysisData(models.Model):
-    f_id = models.ForeignKey(Member, on_delete=models.CASCADE)
+    member_id = models.ForeignKey(Member, on_delete=models.CASCADE)
     request_data = models.ForeignKey(AnalysisRequest, on_delete=models.CASCADE)
     name = models.CharField(max_length=32, verbose_name='이름')
 
@@ -22,7 +22,7 @@ class AnalysisData(models.Model):
     total = models.CharField(max_length=32, verbose_name='종합평가')
 
     def __str__(self):
-        return self.f_id
+        return self.name
 
     class Meta:
         db_table = 'AnalysisData'
