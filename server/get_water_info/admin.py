@@ -7,7 +7,7 @@ from .models import AnalysisData
 class AnalysisRequestAdmin(admin.ModelAdmin):
     list_display = (
         'member_id',
-        'request_data',
+        'request_date',
         'name',
         'water_origin',
         'fe_origin',

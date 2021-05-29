@@ -32,11 +32,11 @@ class AnalysisRequestView(View):
             usage = data['usage']
 
             request_date = data['request_date']
-            request_date = datetime.datetime.strptime(request_date, "%Y-%m-%d").date()
+            # request_date = datetime.datetime.strptime(request_date, "%Y-%m-%d").date()
             start_date = data['start_date']
-            start_date = datetime.datetime.strptime(start_date, "%Y-%m-%d").date()
+            # start_date = datetime.datetime.strptime(start_date, "%Y-%m-%d").date()
             end_date = data['end_date']
-            end_date = datetime.datetime.strptime(end_date, "%Y-%m-%d").date()
+            # end_date = datetime.datetime.strptime(end_date, "%Y-%m-%d").date()
 
         except KeyError as e:
             print("KeyError 발생", e)

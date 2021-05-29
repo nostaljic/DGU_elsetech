@@ -23,9 +23,21 @@ class InfoView(View):
             for obj in result:
                 row_name = 'data' + str(idx)
                 res[row_name] = {}
+                res[row_name]['member_id'] = obj.member_id.id
+                res[row_name]['request_date'] = obj.request_date.request_date
                 res[row_name]['name'] = obj.name
-                res[row_name]['email'] = obj.email
-                res[row_name]['phone'] = obj.phone
+
+                res[row_name]['water_origin'] = obj.water_origin
+                res[row_name]['fe_origin'] = obj.fe_origin
+                res[row_name]['turbidity'] = obj.turbidity
+
+                res[row_name]['date'] = obj.date
+                res[row_name]['fe_user'] = obj.fe_user
+                res[row_name]['mn_user'] = obj.mn_user
+                res[row_name]['al_user'] = obj.al_user
+                res[row_name]['img'] = obj.img
+                res[row_name]['total'] = obj.total
+
                 idx += 1
             return JsonResponse(res, safe=False)
         except KeyError as e:

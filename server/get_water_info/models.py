@@ -7,7 +7,7 @@ from water_req.models import AnalysisRequest
 
 class AnalysisData(models.Model):
     member_id = models.ForeignKey(Member, on_delete=models.CASCADE)
-    request_data = models.ForeignKey(AnalysisRequest, on_delete=models.CASCADE)
+    request_date = models.ForeignKey(AnalysisRequest, on_delete=models.CASCADE)
     name = models.CharField(max_length=32, verbose_name='이름')
 
     water_origin = models.CharField(max_length=32, verbose_name='취수원')
@@ -18,7 +18,7 @@ class AnalysisData(models.Model):
     fe_user = models.FloatField(verbose_name='철')
     mn_user = models.FloatField(verbose_name='망간')
     al_user = models.FloatField(verbose_name='알루미늄')
-    img = models.ImageField(verbose_name='육안검사')
+    img = models.CharField(max_length=254, verbose_name='육안검사')
     total = models.CharField(max_length=32, verbose_name='종합평가')
 
     def __str__(self):
