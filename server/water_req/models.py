@@ -19,7 +19,7 @@ class AnalysisRequest(models.Model):
     end_date = models.CharField(max_length=32,verbose_name='종료 날짜', null=True)
 
     num_people = models.IntegerField(verbose_name='사용 인원', null=True)
-    usage = models.IntegerField(verbose_name='사용 유량', null=True)
+    usage = models.FloatField(verbose_name='사용 유량', null=True)
 
     def __str__(self):
         return self.name
