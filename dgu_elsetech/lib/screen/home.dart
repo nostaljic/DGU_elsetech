@@ -1,5 +1,6 @@
 import 'package:dgu_elsetech/screen/bottom_sheet.dart';
 import 'package:dgu_elsetech/widget/header.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
@@ -7,12 +8,77 @@ import 'package:geolocator/geolocator.dart';
 
 import 'package:dgu_elsetech/widget/box_decoration.dart';
 
+Set<Marker> _createMarker(markers){
+  Set<Marker> _Marker={};
+
+  var lat, long, waterState, address;
+  var _kMapCenter;
+
+  for(int i=0;i<markers.length;i++){
+
+    long = markers[i]['long'];
+    lat = markers[i]['lat'];
+    waterState = markers[i]['state'];
+    address= markers[i]['address'];
+    print(long);print(lat);print(waterState);
+    _kMapCenter = LatLng(lat,long);
+    _Marker.add(
+        Marker(
+          markerId: MarkerId("marker_1"),
+          position: _kMapCenter,
+          icon:BitmapDescriptor.fromAsset(waterState? 'assets/sizuku.png':'assets/dirty_sizuku.png'),
+          infoWindow: InfoWindow(title:address),
+        )
+    );
+  }
+
+
+  return _Marker;
+}
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  final List<Map<dynamic, dynamic>> marker_info = [
+    {
+      "long": 126.734086,
+      "lat": 37.413294,
+      "state": true,
+      "address":"서울시 동작구"
+    },
+    {
+      "long": 	127.639311,
+      "lat": 37.413294,
+      "state": false,
+      "address":"서울시 동작구"
+    },{
+      "long": 126.534095,
+      "lat": 37.413305,
+      "state": true,
+      "address":"서울시 동작구"
+    },
+    {
+      "long": 126.434080,
+      "lat": 37.413290,
+      "state": false,
+      "address":"서울시 동작구"
+    },
+    {
+      "long": 126.334075,
+      "lat": 37.413290,
+      "state": true,
+      "address":"서울시 관악구"
+    },
+    {
+      "long": 126.234080,
+      "lat": 37.413294,
+      "state": true,
+      "address":"서울시 관악구"
+    }
+  ];
   Future<Position> getLocation() async {
     Position position =
         // ignore: deprecated_member_use
@@ -21,6 +87,7 @@ class _HomeState extends State<Home> {
   }
 
   Completer<GoogleMapController> _controller = Completer();
+
 
   @override
   void initState() {
@@ -34,8 +101,8 @@ class _HomeState extends State<Home> {
     var lat = 0.0;
     var long = 0.0;
     var nowLoc = CameraPosition(
-      target: LatLng(100, 100),
-      zoom: 20,
+      target: LatLng(37.413294, 126.734086),
+      zoom: 13,
     );
 
     return CustomHeader(
@@ -62,7 +129,8 @@ class _HomeState extends State<Home> {
                             initialCameraPosition: nowLoc,
                             onMapCreated: (GoogleMapController controller) {
                               _controller.complete(controller);
-                            },
+                              },
+                            markers: _createMarker(marker_info),
                             compassEnabled: true,
                             zoomGesturesEnabled: true,
                             rotateGesturesEnabled: true,

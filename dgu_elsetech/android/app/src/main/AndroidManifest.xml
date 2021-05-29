@@ -36,7 +36,7 @@
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
        <!--             구글 맵 API 설정             -->
-       <meta-data android:name="com.google.android.geo.API_KEY" android:value=""/>
+       <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC0bf3VgRzYcJzzuZdJQi3VtuLgL8W9UHY"/>
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
