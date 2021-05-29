@@ -1,8 +1,12 @@
+import datetime
+
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+
+from login.models import Member
 from .models import AnalysisRequest
 import json
 
@@ -18,14 +22,20 @@ class AnalysisRequestView(View):
     def post(self, request):
         try:
             data = json.loads(request.body)
-            _id = data['id']
-            request_date = data['request_date']
+            member_id = data['member_id']
+            member_id = Member.objects.get(pk=member_id)
+
             location = data['location']
             water_model = data['water_model']
-            start_date = data['start_date']
-            end_date = data['end_date']
             num_people = data['num_people']
             usage = data['usage']
+
+            request_date = data['request_date']
+            request_date = datetime.datetime.strptime(request_date, "%Y-%m-%d").date()
+            start_date = data['start_date']
+            start_date = datetime.datetime.strptime(start_date, "%Y-%m-%d").date()
+            end_date = data['end_date']
+            end_date = datetime.datetime.strptime(end_date, "%Y-%m-%d").date()
 
         except KeyError as e:
             print("KeyError 발생", e)
@@ -35,7 +45,7 @@ class AnalysisRequestView(View):
                 status=400
             )
         a_req = AnalysisRequest(
-            id=_id,
+            member_id=member_id,
             request_date=request_date,
             location=location,
             water_model=water_model,

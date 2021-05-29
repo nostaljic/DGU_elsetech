@@ -6,7 +6,7 @@ from .models import AnalysisRequest
 @admin.register(AnalysisRequest)
 class AnalysisRequestAdmin(admin.ModelAdmin):
     list_display = (
-        'id',
+        'member_id',
         'request_date',
         'location',
         'company_name',
