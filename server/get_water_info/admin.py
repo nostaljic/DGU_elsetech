@@ -7,6 +7,4 @@ from .models import AnalysisData
 class AnalysisRequestAdmin(admin.ModelAdmin):
     list_display = (
         'name',
-        'phone',
-        'email'
     )

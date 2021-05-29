@@ -1,45 +1,11 @@
-import glob
-import openpyxl
-import shutil
 import json
-import os
 
 from django.http import HttpResponse, JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from .models import AnalysisData
-from django.core import serializers
-
-NEW_FILE_PATH = "get_water_info\\newData"
-OLD_FILE_PATH = "get_water_info\\oldData"
-
-
-# 엑셀 파일 읽어서 DB 저장
-def read_new_data(path):
-    wb = openpyxl.load_workbook(path)
-    ws = wb['Sheet1']
-    for row in ws.rows:
-        row_value = []
-        for cell in row:
-            row_value.append(cell.value)
-
-        data = AnalysisData(
-            name=row_value[0],
-            email=row_value[1],
-            phone=row_value[2]
-        )
-        data.save()
-
-    new_path = os.path.join(os.getcwd(), OLD_FILE_PATH, os.path.basename(path))
-    shutil.move(path, new_path)
-
-
-def read_all_data():
-    path = os.path.join(os.getcwd(), NEW_FILE_PATH, '*.xlsx')
-    file_list = glob.glob(path)
-    for file in file_list:
-        read_new_data(file)
+from .preprocess import *
 
 
 # Create your views here.

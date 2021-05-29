@@ -6,7 +6,13 @@ from .models import AnalysisRequest
 @admin.register(AnalysisRequest)
 class AnalysisRequestAdmin(admin.ModelAdmin):
     list_display = (
-        'name',
-        'phone',
-        'email'
+        'id',
+        'request_date',
+        'location',
+        'company_name',
+        'water_model',
+        'start_date',
+        'end_date',
+        'num_people',
+        'usage',
     )

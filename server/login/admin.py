@@ -10,4 +10,5 @@ class MemberAdmin(admin.ModelAdmin):
         'email',
         'id',
         'pw',
+        'phone'
     )
