@@ -4,7 +4,7 @@
 <code>python manage.py runserver</code>
 
 ## 관리자 페이지
-접속 주소 - 127.0.0.1:8000/admin/  
+URL - http://127.0.0.1:8000/admin/  
 아이디, 비번 - admin  
   
 <img src="https://user-images.githubusercontent.com/48395704/120063990-f905ab80-c0a4-11eb-86d5-9c935264e56a.png" width="40%" height="40%">
@@ -48,6 +48,7 @@
 ## 서버에 요청 보내기
 요청은 모두 JSON 형태  
 ### 회원가입 POST 요청 예시
+URL - http://127.0.0.1:8000/login/register/
 <pre>
 <code>
 {
@@ -62,6 +63,7 @@
 </pre>
 
 ### 로그인 POST 요청 예시
+http://127.0.0.1:8000/login/
 <pre>
 <code>
 {
@@ -72,6 +74,7 @@
 </pre>
 
 ### 분석요청 POST 요청 예시
+URL - http://127.0.0.1:8000/water_req/
 <pre>
 <code>
 {
@@ -90,6 +93,7 @@
 </pre>
 
 ### 분석 결과 요청 POST 요청 예시
+URL - http://127.0.0.1:8000/get_water_info/
 <pre>
 <code>
 {
