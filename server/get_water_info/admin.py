@@ -9,6 +9,7 @@ class AnalysisRequestAdmin(admin.ModelAdmin):
         'member_id',
         'request_date',
         'name',
+        'filename',
         'location',
         'latitude',
         'longitude',

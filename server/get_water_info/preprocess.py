@@ -68,6 +68,7 @@ def read_new_data(path, new_path):
             member_id=member_id,
             request_date=request_date,
             name=name,
+            filename=filename,
             location=location,
             latitude=latitude,
             longitude=longitude,
