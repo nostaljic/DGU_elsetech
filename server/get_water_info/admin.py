@@ -6,7 +6,16 @@ from .models import AnalysisData
 @admin.register(AnalysisData)
 class AnalysisRequestAdmin(admin.ModelAdmin):
     list_display = (
+        'member_id',
+        'request_date',
         'name',
-        'phone',
-        'email'
+        'water_origin',
+        'fe_origin',
+        'turbidity',
+        'date',
+        'fe_user',
+        'mn_user',
+        'al_user',
+        'img',
+        'total',
     )
