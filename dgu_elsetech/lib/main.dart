@@ -7,11 +7,12 @@ import 'package:dgu_elsetech/widget/main_loading.dart';
 import 'package:dgu_elsetech/screen/home.dart';
 import 'package:dgu_elsetech/screen/fee_information.dart';
 import 'package:dgu_elsetech/screen/analysis_report.dart';
+import 'package:dgu_elsetech/api/get_analysis_data.dart';
 import 'package:dgu_elsetech/screen/welcome.dart';
 import 'package:dgu_elsetech/screen/findPW.dart';
 
-
 void main() {
+
   runApp(MyApp());
 }
 

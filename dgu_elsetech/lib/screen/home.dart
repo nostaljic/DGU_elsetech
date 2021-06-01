@@ -5,10 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:dgu_elsetech/api/get_analysis_data.dart';
 import 'package:dgu_elsetech/widget/box_decoration.dart';
 
 Set<Marker> _createMarker(markers){
+
   Set<Marker> _Marker={};
 
   var lat, long, waterState, address;
@@ -18,16 +19,17 @@ Set<Marker> _createMarker(markers){
 
     long = markers[i]['long'];
     lat = markers[i]['lat'];
-    waterState = markers[i]['state'];
-    address= markers[i]['address'];
+    waterState = markers[i]['total']=='안전'?true:false;
+    address= markers[i]['total'];
     print(long);print(lat);print(waterState);
     _kMapCenter = LatLng(lat,long);
     _Marker.add(
         Marker(
-          markerId: MarkerId("marker_1"),
+          markerId: MarkerId("${i}" + markers[i]['request_date']),
           position: _kMapCenter,
           icon:BitmapDescriptor.fromAsset(waterState? 'assets/sizuku.png':'assets/dirty_sizuku.png'),
           infoWindow: InfoWindow(title:address),
+
         )
     );
   }
@@ -42,42 +44,41 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  //var a =postRequest();
+
   final List<Map<dynamic, dynamic>> marker_info = [
     {
       "long": 126.734086,
       "lat": 37.413294,
-      "state": true,
-      "address":"서울시 동작구"
+      "member_id": "test_id",
+      "request_date": "2021-05-20",
+      "name": "박승일",
+      "water_origin": "000 정수장",
+      "fe_origin": 0.0,
+      "turbidity": 0.0,
+      "date": 1,
+      "fe_user": 0.0,
+      "mn_user": 0.0,
+      "al_user": 0.0,
+      "img": "이미지 URL",
+      "total": "경고"
     },
     {
-      "long": 	127.639311,
-      "lat": 37.413294,
-      "state": false,
-      "address":"서울시 동작구"
-    },{
-      "long": 126.534095,
-      "lat": 37.413305,
-      "state": true,
-      "address":"서울시 동작구"
+      "long": 127.639311,
+      "lat": 37.411294,
+      "member_id": "test_id",
+      "request_date": "2021-05-20",
+      "name": "박승일",
+      "water_origin": "000 정수장",
+      "fe_origin": 0.0,
+      "turbidity": 0.0,
+      "date": 1,
+      "fe_user": 0.0,
+      "mn_user": 0.0,
+      "al_user": 0.0,
+      "img": "이미지 URL",
+      "total": "안전"
     },
-    {
-      "long": 126.434080,
-      "lat": 37.413290,
-      "state": false,
-      "address":"서울시 동작구"
-    },
-    {
-      "long": 126.334075,
-      "lat": 37.413290,
-      "state": true,
-      "address":"서울시 관악구"
-    },
-    {
-      "long": 126.234080,
-      "lat": 37.413294,
-      "state": true,
-      "address":"서울시 관악구"
-    }
   ];
   Future<Position> getLocation() async {
     Position position =
@@ -92,6 +93,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+
   }
 
   @override
