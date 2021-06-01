@@ -106,5 +106,5 @@ URL - http://127.0.0.1:8000/get_water_info/
 </code>
 </pre>
 
-### 분석 결과 
+### 분석 결과 엑셀파일 다운로드  
 URL - http://127.0.0.1:8000/get_water_info/excel/파일명.xlsx
