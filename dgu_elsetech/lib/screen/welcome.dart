@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:dgu_elsetech/screen/login.dart';
 import 'package:dgu_elsetech/screen/signup.dart';
 
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:flutter_svg/flutter_svg.dart';
+
 class WelcomePage extends StatefulWidget {
   WelcomePage({Key? key, required this.title}) : super(key: key);
 
@@ -16,7 +19,11 @@ class _WelcomePageState extends State<WelcomePage> {
     return InkWell(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginPage(title: 'login',)));
+            context,
+            MaterialPageRoute(
+                builder: (context) => LoginPage(
+                      title: 'login',
+                    )));
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -44,7 +51,11 @@ class _WelcomePageState extends State<WelcomePage> {
     return InkWell(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignUpPage(title: 'signup',)));
+            context,
+            MaterialPageRoute(
+                builder: (context) => SignUpPage(
+                      title: 'signup',
+                    )));
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -62,25 +73,29 @@ class _WelcomePageState extends State<WelcomePage> {
     );
   }
 
-
   Widget _title() {
-    return RichText(
-      textAlign: TextAlign.center,
-      text: TextSpan(
-          children: [
-            TextSpan(
-              text: 'WATER INDEX MAP',
-              style: TextStyle(color: Colors.white, fontSize: 30),
-            )
-          ]),
+    return SizedBox(
+      height: 300,
+      width: 300,
+      child: SvgPicture.asset('assets/WIM_logo.svg'),
     );
+    // return RichText(
+    //   textAlign: TextAlign.center,
+    //   text: TextSpan(
+    //       children: [
+    //         TextSpan(
+    //           text: 'WATER INDEX MAP',
+    //           style: TextStyle(color: Colors.white, fontSize: 30),
+    //         )
+    //       ]),
+    // );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:SingleChildScrollView(
-        child:Container(
+      body: SingleChildScrollView(
+        child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
@@ -102,7 +117,7 @@ class _WelcomePageState extends State<WelcomePage> {
             children: <Widget>[
               _title(),
               SizedBox(
-                height: 80,
+                height: 30,
               ),
               _submitButton(),
               SizedBox(

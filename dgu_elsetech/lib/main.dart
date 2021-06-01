@@ -9,6 +9,7 @@ import 'package:dgu_elsetech/screen/fee_information.dart';
 import 'package:dgu_elsetech/screen/analysis_report.dart';
 import 'package:dgu_elsetech/api/get_analysis_data.dart';
 import 'package:dgu_elsetech/screen/welcome.dart';
+import 'package:dgu_elsetech/screen/findPW.dart';
 
 void main() {
 
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
               return WelcomePage(title: 'welcome');
             case Routes.login:
               return LoginPage(title: 'login');
+            case Routes.find:
+              return FindPWPage(title: 'find');
             case Routes.home:
               return Home();
             case Routes.request:

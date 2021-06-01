@@ -14,6 +14,20 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final formKey = GlobalKey<FormState>();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _pwController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _pwController.dispose();
+    _nameController.dispose();
+    super.dispose();
+  }
+
   bool isChecked = false;
   Widget _backButton() {
     return InkWell(
@@ -63,30 +77,32 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget _submitButton() {
     return InkWell(
       onTap: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            // return object of type Dialog
-            return AlertDialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0)
-              ),
-              title: new Text("환영합니다!"),
-              content: SingleChildScrollView(child:new Text("회원가입이 되었습니다.")),
-              actions: <Widget>[
-                new FlatButton(
-                  child: new Text("닫기"),
-                  onPressed: () {
-                    // Route route = MaterialPageRoute(builder: (context) => LoginPage(title: 'login',));
-                    // Navigator.pushReplacement(context, route);
-                    Navigator.pushNamed(context, 'login');
-                    },
+        if (formKey.currentState!.validate()) {
+          // 정상
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              // return object of type Dialog
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)
                 ),
-              ],
-            );
-          },
-        );
-
+                title: new Text("환영합니다!"),
+                content: SingleChildScrollView(child:new Text("회원가입이 완료 되었습니다.")),
+                actions: <Widget>[
+                  new FlatButton(
+                    child: new Text("닫기"),
+                    onPressed: () {
+                      // Route route = MaterialPageRoute(builder: (context) => LoginPage(title: 'login',));
+                      // Navigator.pushReplacement(context, route);
+                      Navigator.pushNamed(context, 'login');
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        }
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -125,7 +141,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     borderRadius: BorderRadius.circular(8.0)
               ),
               title: new Text("개인정보 이용약관"),
-              content: SingleChildScrollView(child:new Text("약관내용")),
+              content: SingleChildScrollView(child:new Text("~~약관내용~~")),
               actions: <Widget>[
                 new FlatButton(
                   child: new Text("닫기"),
@@ -182,56 +198,154 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Widget _emailPasswordWidget() {
-    return Column(
-      children: <Widget>[
-        _entryField("이름"),
-        _entryField("이메일"),
-        _entryField("비밀번호", isPassword: true),
-      ],
+  // Widget _emailPasswordWidget() {
+  //   return Column(
+  //     children: <Widget>[
+  //       _entryField("이름"),
+  //       _entryField("이메일"),
+  //       _entryField("비밀번호", isPassword: true),
+  //     ],
+  //   );
+  // }
+
+  InputDecoration getTextFieldDeco(String hint) {
+    return InputDecoration(
+      hintText: hint,
+      // enabledBorder: OutlineInputBorder(
+      //   borderSide: BorderSide(color: Colors.grey, width: 1),
+      //   borderRadius: BorderRadius.circular(12),
+      // ),
+      // focusedBorder: OutlineInputBorder(
+      //   borderSide: BorderSide(color: Colors.grey, width: 1),
+      //   borderRadius: BorderRadius.circular(12),
+      // ),
+      fillColor: Colors.grey[100],
+      filled: true,
+    );
+  }
+
+  TextFormField _emailForm() {
+    return TextFormField(
+      controller: _emailController,
+      decoration: getTextFieldDeco("이메일"),
+      // decoration: InputDecoration(
+      //   labelText: "이메일",
+      //   labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+      //   hintText: 'email@email.com',
+      // ),
+      validator: (value) {
+        if(value!.isEmpty || !value.contains('@')){
+          return '이메일을 입력하세요.';
+        }
+        return null;
+      },
+    );
+  }
+
+  TextFormField _pwForm() {
+    return TextFormField(
+      controller: _pwController,
+      decoration: getTextFieldDeco("비밀번호"),
+    // InputDecoration(
+      //   labelText: "비밀번호",
+      //   labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+      // ),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return '비밀번호를 입력하세요.';
+        }
+        return null;
+      },
+    );
+  }
+
+  TextFormField _nameForm() {
+    return TextFormField(
+      controller: _nameController,
+      decoration: getTextFieldDeco("이름"),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return '이름을 입력하세요.';
+        }
+        return null;
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        height: height,
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              top: -MediaQuery.of(context).size.height * .15,
-              right: -MediaQuery.of(context).size.width * .4,
-              child: BezierContainer(),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: height * .2),
-                    _title(),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    _emailPasswordWidget(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    _submitButton(),
-                    SizedBox(height: height * .14),
-                    _loginAccountLabel(),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(top: 40, left: 0, child: _backButton()),
-          ],
+      resizeToAvoidBottomInset: true,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Form(
+          key: formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Spacer(flex: 4),
+              _title(),
+              Spacer(flex: 2),
+              _nameForm(),
+              Spacer(flex: 1),
+              _emailForm(),
+              Spacer(flex: 1),
+              _pwForm(),
+              Spacer(flex: 1),
+              _submitButton(),
+              Spacer(flex: 1),
+              _loginAccountLabel(),
+              Spacer(flex: 3),
+            ],
+          ),
         ),
+        // Positioned(top: 40, left: 0, child: _backButton()),
       ),
     );
   }
+  // @override
+  // Widget build(BuildContext context) {
+  //   final height = MediaQuery.of(context).size.height;
+  //   return Scaffold(
+  //     resizeToAvoidBottomInset: true,
+  //     body: Container(
+  //       height: height,
+  //       child: Stack(
+  //         children: <Widget>[
+  //           Positioned(
+  //             top: -MediaQuery.of(context).size.height * .15,
+  //             right: -MediaQuery.of(context).size.width * .4,
+  //             child: BezierContainer(),
+  //           ),
+  //           Container(
+  //             padding: EdgeInsets.symmetric(horizontal: 20),
+  //             child: SingleChildScrollView(
+  //               child: Column(
+  //                 crossAxisAlignment: CrossAxisAlignment.center,
+  //                 mainAxisAlignment: MainAxisAlignment.center,
+  //                 children: <Widget>[
+  //                   SizedBox(height: height * .2),
+  //                   _title(),
+  //                   SizedBox(
+  //                     height: 50,
+  //                   ),
+  //                   _emailPasswordWidget(),
+  //                   SizedBox(
+  //                     height: 20,
+  //                   ),
+  //                   _submitButton(),
+  //                   SizedBox(height: height * .14),
+  //                   _loginAccountLabel(),
+  //                 ],
+  //               ),
+  //             ),
+  //           ),
+  //           Positioned(top: 40, left: 0, child: _backButton()),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }
