@@ -1,7 +1,3 @@
-dgu_elsetech
-2.12
-file:///Users/yeonmac/!Project/DGU_elsetech/dgu_elsetech/
-file:///Users/yeonmac/!Project/DGU_elsetech/dgu_elsetech/lib/
 animations
 2.12
 file:///Users/yeonmac/Developer/flutter/.pub-cache/hosted/pub.dartlang.org/animations-2.0.0/
@@ -186,4 +182,8 @@ flutter_web_plugins
 2.12
 file:///Users/yeonmac/Developer/flutter/packages/flutter_web_plugins/
 file:///Users/yeonmac/Developer/flutter/packages/flutter_web_plugins/lib/
+dgu_elsetech
+2.12
+file:///Users/yeonmac/_Project/DGU_elsetech/dgu_elsetech/
+file:///Users/yeonmac/_Project/DGU_elsetech/dgu_elsetech/lib/
 2

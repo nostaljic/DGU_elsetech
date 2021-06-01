@@ -113,6 +113,7 @@ class _CustomHeaderState extends State<CustomHeader> {
                                   context,
                                   ModalRoute.withName(
                                       Navigator.defaultRouteName));
+                              Navigator.pushNamed(context, Routes.home);
                             },
                           ),
                           SizedBox(
