@@ -33,6 +33,7 @@ URL - http://127.0.0.1:8000/admin/
 - member_id = 아이디 (사용자 DB 외래키)
 - request_date 요청날짜 (분석요청 DB 외래키)
 - name 성명 (문자열)
+- filename 해당 분석결과 파일명 (문자열)
 - location 주소 (문자열)
 - latitude 위도 (실수)
 - longitude 경도 (실수)
@@ -104,3 +105,6 @@ URL - http://127.0.0.1:8000/get_water_info/
 }
 </code>
 </pre>
+
+### 분석 결과 
+URL - http://127.0.0.1:8000/get_water_info/excel/파일명.xlsx
