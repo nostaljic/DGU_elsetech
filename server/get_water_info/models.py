@@ -10,6 +10,10 @@ class AnalysisData(models.Model):
     request_date = models.ForeignKey(AnalysisRequest, on_delete=models.CASCADE)
     name = models.CharField(max_length=32, verbose_name='이름')
 
+    location = models.CharField(max_length=254, verbose_name='주소')
+    latitude = models.FloatField(verbose_name='위도')
+    longitude = models.FloatField(verbose_name='경도')
+
     water_origin = models.CharField(max_length=32, verbose_name='취수원')
     fe_origin = models.FloatField(verbose_name='철_취수원')
     turbidity = models.FloatField(verbose_name='탁도')

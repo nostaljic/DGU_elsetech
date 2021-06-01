@@ -4,6 +4,7 @@ from openpyxl_image_loader import SheetImageLoader
 import datetime
 import shutil
 import os
+from .geocoding import *
 
 from get_water_info.models import AnalysisData
 from login.models import Member
@@ -15,15 +16,23 @@ OLD_FILE_PATH = os.path.join(os.getcwd(), "get_water_info\\oldData")
 
 # 엑셀 파일 읽어서 DB 저장
 def read_new_data(path, new_path):
+    filename = os.path.basename(path)
+    old_data_path = os.path.join(new_path, filename)
+
     wb = openpyxl.load_workbook(path)
     ws = wb['Sheet1']
 
-    member_id = "test_id"   # 회원 아이디
+    member_id = ws['C7'].value   # 회원 아이디
     member_id = Member.objects.get(pk=member_id)
 
     request_date = ws['A6'].value  # 요청 날짜
     request_date = request_date.strftime('%Y-%m-%d')
     request_date = AnalysisRequest.objects.get(pk=request_date)
+
+    location = ws['C10'].value
+    crd = get_geocode(location)
+    latitude = crd[0]
+    longitude = crd[1]
 
     name = ws['A7'].value  # 이름
     water_origin = ws['C18'].value  # 취수원
@@ -54,28 +63,14 @@ def read_new_data(path, new_path):
             value = ws[pos].value
             analysis_data.append(value)
 
-        # 출력 테스트
-        '''
-        print(day)
-
-        print("이름 : " + name)
-
-        print("- 상수도 정보- ")
-        print("취수원 : " + water_origin)
-        print("탁도 : " + str(turbidity))
-        print("철(Fe) : " + str(fe_origin))
-
-        print("- 수질 정보 분석 보고서 - ")
-        for i in range(5):
-            print(label[i] + " : " + str(analysis_data[i]))
-
-        print("=============================")
-        '''
         # DB에 저장
         data = AnalysisData(
             member_id=member_id,
             request_date=request_date,
             name=name,
+            location=location,
+            latitude=latitude,
+            longitude=longitude,
             water_origin=water_origin,
             fe_origin=fe_origin,
             turbidity=turbidity,
@@ -92,7 +87,7 @@ def read_new_data(path, new_path):
         cell_pos = chr(cell_row) + str(21)
 
     # 읽은 파일 이동
-    shutil.move(path, new_path)
+    shutil.move(path, old_data_path)
 
 
 def read_all_data(test=False):

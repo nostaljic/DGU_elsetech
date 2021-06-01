@@ -27,6 +27,10 @@ class InfoView(View):
                 res[row_name]['request_date'] = obj.request_date.request_date
                 res[row_name]['name'] = obj.name
 
+                res[row_name]['location'] = obj.location
+                res[row_name]['latitude'] = obj.latitude
+                res[row_name]['longitude'] = obj.longitude
+
                 res[row_name]['water_origin'] = obj.water_origin
                 res[row_name]['fe_origin'] = obj.fe_origin
                 res[row_name]['turbidity'] = obj.turbidity
