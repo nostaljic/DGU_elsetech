@@ -9,6 +9,11 @@ class AnalysisData(models.Model):
     member_id = models.ForeignKey(Member, on_delete=models.CASCADE)
     request_date = models.ForeignKey(AnalysisRequest, on_delete=models.CASCADE)
     name = models.CharField(max_length=32, verbose_name='이름')
+    filename = models.CharField(max_length=254, verbose_name='파일명')
+
+    location = models.CharField(max_length=254, verbose_name='주소')
+    latitude = models.FloatField(verbose_name='위도')
+    longitude = models.FloatField(verbose_name='경도')
 
     water_origin = models.CharField(max_length=32, verbose_name='취수원')
     fe_origin = models.FloatField(verbose_name='철_취수원')
