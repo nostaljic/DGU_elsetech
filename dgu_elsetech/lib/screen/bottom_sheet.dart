@@ -201,7 +201,7 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                             style: _surround["mn_user"] == 0.0
                                 ? mainBlue
                                 : mainRed),
-                        Text("_surround"),
+
 
                       ],
                     )),
@@ -225,7 +225,7 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                             style: _surround["fe_user"] == 0.0
                                 ? mainBlue
                                 : mainRed),
-                        Text("_surround"),
+
 
                       ],
                     )),
@@ -249,7 +249,7 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                             style: _surround["al_user"] == 0.0
                                 ? mainBlue
                                 : mainRed),
-                        Text("_surround"),
+
 
                       ],
                     )),
