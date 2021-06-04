@@ -72,8 +72,8 @@ class _HomeState extends State<Home> {
     var lat = 0.0;
     var long = 0.0;
     var nowLoc = CameraPosition(
-      target: LatLng(37.413294, 126.734086),
-      zoom: 13,
+      target: LatLng(37.606991, 127.0232185),
+      zoom: 10,
     );
 
     return CustomHeader(

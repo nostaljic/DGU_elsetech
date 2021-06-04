@@ -8,6 +8,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "archive",
+      "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/archive-2.0.13",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "args",
+      "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/args-1.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "async",
       "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.5.0",
       "packageUri": "lib/",
@@ -44,10 +56,22 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "color",
+      "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/color-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "convert",
       "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "1.17"
+    },
+    {
+      "name": "crypto",
+      "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
     },
     {
       "name": "cupertino_icons",
@@ -78,6 +102,12 @@
       "rootUri": "file:///E:/Android/FlutterSDK/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_native_splash",
+      "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_native_splash-0.1.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
@@ -144,6 +174,12 @@
       "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.3"
+    },
+    {
+      "name": "image",
+      "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.19",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "js",
@@ -284,13 +320,19 @@
       "languageVersion": "2.7"
     },
     {
+      "name": "yaml",
+      "rootUri": "file:///E:/Android/FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/yaml-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
+    },
+    {
       "name": "dgu_elsetech",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-06-04T16:53:00.288831Z",
+  "generated": "2021-06-04T19:27:09.352878Z",
   "generator": "pub",
   "generatorVersion": "2.12.3"
 }
