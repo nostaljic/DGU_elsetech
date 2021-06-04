@@ -194,10 +194,10 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                            _surround["mn_user"] == 0.0
-                                ? "망간(Mn) : ${_surround["mn_user"]}"
-                                : "망간(Mn) : ${_surround["mn_user"]}",
-                            style: _surround["mn_user"] == 0.0
+                            _surround["mn_user"] <= 0.3
+                                ? "망간(Mn) : ${_surround["mn_user"]}mg/L"
+                                : "망간(Mn) : ${_surround["mn_user"]}mg/L",
+                            style: _surround["mn_user"] <= 0.3
                                 ? mainBlue
                                 : mainRed),
                       ],
@@ -218,10 +218,10 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                            _surround["fe_user"] == 0.0
-                                ? "철(Fe) : ${_surround["fe_user"]}"
-                                : "철(Fe) : ${_surround["fe_user"]}",
-                            style: _surround["fe_user"] == 0.0
+                            _surround["fe_user"] <= 0.3
+                                ? "철(Fe) : ${_surround["fe_user"]}mg/L"
+                                : "철(Fe) : ${_surround["fe_user"]}mg/L",
+                            style: _surround["fe_user"] <= 0.3
                                 ? mainBlue
                                 : mainRed),
                       ],
@@ -242,10 +242,10 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                            _surround["al_user"] == 0.0
-                                ? "알루미늄(Al) : ${_surround["al_user"]}"
-                                : "알루미늄(Al) : ${_surround["al_user"]}",
-                            style: _surround["al_user"] == 0.0
+                            _surround["al_user"] <= 0.2
+                                ? "알루미늄(Al) : ${_surround["al_user"]}mg/L"
+                                : "알루미늄(Al) : ${_surround["al_user"]}mg/L",
+                            style: _surround["al_user"] <= 0.2
                                 ? mainBlue
                                 : mainRed),
                       ],
@@ -268,10 +268,10 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             Text(
-                                _surround["mn_user"] == 0.0
+                                _surround["mn_user"] <= 0.3
                                     ? "망간(Mn) 검출 안전범위."
                                     : "망간(Mn) 검출 경고범위.",
-                                style: _surround["mn_user"] == 0.0
+                                style: _surround["mn_user"] <= 0.3
                                     ? mainBlue
                                     : mainRed),
                           ],
@@ -281,10 +281,10 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             Text(
-                                _surround["fe_user"] == 0.0
+                                _surround["fe_user"] <= 0.3
                                     ? "철(Fe) 검출 안전범위."
                                     : "철(Fe) 검출 경고범위.",
-                                style: _surround["fe_user"] == 0.0
+                                style: _surround["fe_user"] <= 0.3
                                     ? mainBlue
                                     : mainRed),
                           ],
@@ -294,10 +294,10 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             Text(
-                                _surround["al_user"] == 0.0
+                                _surround["al_user"]<= 0.3
                                     ? "알루미늄(Al) 검출 안전범위."
                                     : "알루미늄(Al) 검출 경고범위.",
-                                style: _surround["al_user"] == 0.0
+                                style: _surround["al_user"] <= 0.3
                                     ? mainBlue
                                     : mainRed),
                           ],

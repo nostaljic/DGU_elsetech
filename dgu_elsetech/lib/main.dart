@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'dart:async';
 import 'package:dgu_elsetech/route.dart';
 import 'package:dgu_elsetech/screen/login.dart';
 import 'package:dgu_elsetech/screen/payment.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Water Index Map',
       // home: Home(),
-      home: WelcomePage(),
+      home: SplashScreen(),
       // initialRoute: Routes.home,
       onGenerateRoute: (RouteSettings settings) {
         // ignore: missing_return
@@ -56,5 +57,32 @@ class MyApp extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false,
     );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => new _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  startTime() async {
+    var _duration = new Duration(seconds: 4);
+    return new Timer(_duration, navigationPage);
+  }
+
+  void navigationPage() {
+    Navigator.of(context).pushReplacementNamed(Routes.welcome);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startTime();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new MainLoading();
   }
 }

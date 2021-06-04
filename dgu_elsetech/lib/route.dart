@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Routes {
-  static const String welcome = "/";
+  static const String welcome = "welcome";
   static const String home = "home";
   static const String request = "request";
   static const String analysis = "analysis";

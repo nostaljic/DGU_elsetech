@@ -41,7 +41,7 @@ dependency_overrides:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_native_splash: ^0.1.9
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -55,6 +55,8 @@ flutter:
     - assets/
   # To add assets to your application, add an assets section, like this:
   #   - images/a_dot_ham.jpeg
+flutter_native_splash:
+  image: assets/ic_launcherz.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
