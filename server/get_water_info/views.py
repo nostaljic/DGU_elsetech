@@ -36,6 +36,10 @@ class InfoView(View):
                 res[row_name]['fe_origin'] = obj.fe_origin
                 res[row_name]['turbidity'] = obj.turbidity
 
+                res[row_name]['public_ph'] = obj.public_ph
+                res[row_name]['public_rc'] = obj.public_rc
+                res[row_name]['public_tb'] = obj.public_tb
+
                 res[row_name]['date'] = obj.date
                 res[row_name]['fe_user'] = obj.fe_user
                 res[row_name]['mn_user'] = obj.mn_user
