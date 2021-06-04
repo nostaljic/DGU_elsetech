@@ -1,5 +1,6 @@
 import 'package:dgu_elsetech/style/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 const TextStyle drawerBold =
     TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold);
@@ -17,3 +18,7 @@ const TextStyle mainBlack =
     TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold);
 
 const TextStyle subBlack = TextStyle(fontSize: 15, color: Colors.black);
+
+const kPrimaryColor = Color(0xFF232844);
+const kPrimaryLightColor = Color(0xFFEEF6FD);
+

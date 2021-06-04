@@ -138,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
             // return object of type Dialog
             return AlertDialog(
               shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0)
+                    borderRadius: BorderRadius.circular(3.0)
               ),
               title: new Text("개인정보 이용약관"),
               content: SingleChildScrollView(child:new Text("~~약관내용~~")),
@@ -155,8 +155,8 @@ class _SignUpPageState extends State<SignUpPage> {
         );
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 15),
-        padding: EdgeInsets.all(15),
+        margin: EdgeInsets.symmetric(vertical: 1),
+        padding: EdgeInsets.all(5),
         alignment: Alignment.bottomCenter,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

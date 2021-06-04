@@ -2,6 +2,8 @@
 import 'dart:async';
 import 'package:dgu_elsetech/route.dart';
 import 'package:dgu_elsetech/screen/login.dart';
+import 'package:dgu_elsetech/screen/payment.dart';
+import 'package:dgu_elsetech/screen/paymentScreen.dart';
 import 'package:dgu_elsetech/widget/header.dart';
 import 'package:flutter/material.dart';
 import 'package:dgu_elsetech/widget/main_loading.dart';
@@ -11,6 +13,7 @@ import 'package:dgu_elsetech/screen/analysis_report.dart';
 import 'package:dgu_elsetech/api/get_analysis_data.dart';
 import 'package:dgu_elsetech/screen/welcome.dart';
 import 'package:dgu_elsetech/screen/findPW.dart';
+import 'package:dgu_elsetech/screen/request.dart';
 
 void main() {
 
@@ -26,6 +29,7 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       // initialRoute: Routes.home,
       onGenerateRoute: (RouteSettings settings) {
+        // ignore: missing_return
         return Routes.fadeThrough(settings, (context) {
           switch (settings.name) {
             case Routes.welcome:
@@ -40,6 +44,10 @@ class MyApp extends StatelessWidget {
               return Home(); //분석 페이지 구현 후 수정
             case Routes.analysis:
               return AnalysisReport();
+            case Routes.user:
+              return RequestScreen();
+            case Routes.payment:
+              return PaymentScreen();
             case Routes.fee:
               return FeeInfo();
             defalut:

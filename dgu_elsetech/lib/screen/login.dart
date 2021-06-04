@@ -6,6 +6,7 @@ import 'package:dgu_elsetech/screen/home.dart';
 import 'package:dgu_elsetech/route.dart';
 import 'package:dgu_elsetech/screen/findPW.dart';
 
+
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key, required this.title}) : super(key: key);
 
@@ -173,7 +174,7 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushReplacement(context, route);
       },
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+        padding: EdgeInsets.symmetric(vertical: 2, horizontal: 2),
         alignment: Alignment.centerRight,
         child: Text(
           '비밀번호찾기',
@@ -276,6 +277,7 @@ class _LoginPageState extends State<LoginPage> {
               _pwForm(),
               Spacer(flex: 1),
               _submitButton(),
+              Spacer(flex: 1),
               _findPassword(),
               _divider(),
               Spacer(flex: 2),

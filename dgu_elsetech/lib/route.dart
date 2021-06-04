@@ -10,6 +10,8 @@ class Routes {
   static const String fee = "fee";
   static const String login = "login";
   static const String find = "find";
+  static const String user = "user";
+  static const String payment = "payment";
 
   static Route<T> fadeThrough<T>(RouteSettings settings, WidgetBuilder page,
       {int duration = 300}) {
