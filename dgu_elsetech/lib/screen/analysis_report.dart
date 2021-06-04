@@ -5,6 +5,7 @@ import 'package:dgu_elsetech/widget/box_decoration.dart';
 import 'package:dgu_elsetech/widget/content_paragraph.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:dgu_elsetech/widget/line_chart.dart';
+import 'package:dgu_elsetech/api/get_analysis_data.dart';
 
 class AnalysisReport extends StatelessWidget {
 
@@ -27,33 +28,42 @@ class AnalysisReport extends StatelessWidget {
     ];
     final List<Map<dynamic, dynamic>> analysisReports = [
       {
-        "title": "1월 분석 보고서",
-        "time": DateTime.utc(2021, 1, 15, 12, 00, 00),
+        "long": 126.734086,
+        "lat": 37.413294,
+        "member_id": "test_id",
+        "request_date": "2021-05-20",
+        "name": "박승일",
+        "water_origin": "000 정수장",
+        "fe_origin": 0.0,
+        "turbidity": 0.0,
+        "date": 1,
+        "fe_user": 0.0,
+        "mn_user": 0.0,
+        "al_user": 0.0,
+        "img": "이미지 URL",
+        "total": "경고"
       },
       {
-        "title": "2월 분석 보고서",
-        "time": DateTime.utc(2021, 2, 15, 12, 00, 00),
-      },{
-        "title": "3월 분석 보고서",
-        "time": DateTime.utc(2021, 3, 15, 12, 00, 00),
+        "long": 127.639311,
+        "lat": 37.411294,
+        "member_id": "test_id",
+        "request_date": "2021-05-20",
+        "name": "박승일",
+        "water_origin": "000 정수장",
+        "fe_origin": 0.0,
+        "turbidity": 0.0,
+        "date": 1,
+        "fe_user": 0.0,
+        "mn_user": 0.0,
+        "al_user": 0.0,
+        "img": "이미지 URL",
+        "total": "안전"
       },
-      {
-        "title": "4월 분석 보고서",
-        "time": DateTime.utc(2021, 4, 15, 12, 00, 00),
-      },
-      {
-        "title": "5월 분석 보고서",
-        "time": DateTime.utc(2021, 5, 15, 12, 00, 00),
-      },
-      {
-        "title": "6월 분석 보고서",
-        "time": DateTime.utc(2021, 6, 15, 12, 00, 00),
-      }
     ];
     return CustomHeader(body:
     Column(
       children: [
-        CustomedBox(height:size.height*0.4,
+        CustomedBox(height:size.height*0.8,
             child:
             Column(
               children: [
@@ -94,35 +104,35 @@ class AnalysisReport extends StatelessWidget {
             ),
 
         ),
-        CustomedBox(height:size.height*0.4,child:
-        Column(
-          children: [
-            Row(
-                children: [
-                  Container(alignment: AlignmentDirectional.topStart,
-                    height: size.height * 0.02, width: rowwidth,),
-                ]),
-            Row(
-              children: [
-                Container(width: size.width * 0.1),
-                Text("월간 분석 추이",style:TextStyle(fontSize: size.width*0.05,fontWeight: FontWeight.bold),),
-                Icon(Icons.description_outlined)
-              ],
-            ),
-            Row(
-                children: [
-                  Container(alignment: AlignmentDirectional.topStart,
-                    height: size.height * 0.02, width: rowwidth,),
-                ]),
-            LineChartAnalysis(),
-
-
-
-
-
-          ],
-        )
-        )
+        // CustomedBox(height:size.height*0.4,child:
+        // Column(
+        //   children: [
+        //     Row(
+        //         children: [
+        //           Container(alignment: AlignmentDirectional.topStart,
+        //             height: size.height * 0.02, width: rowwidth,),
+        //         ]),
+        //     Row(
+        //       children: [
+        //         Container(width: size.width * 0.1),
+        //         Text("월간 분석 추이",style:TextStyle(fontSize: size.width*0.05,fontWeight: FontWeight.bold),),
+        //         Icon(Icons.description_outlined)
+        //       ],
+        //     ),
+        //     Row(
+        //         children: [
+        //           Container(alignment: AlignmentDirectional.topStart,
+        //             height: size.height * 0.02, width: rowwidth,),
+        //         ]),
+        //     LineChartAnalysis(),
+        //
+        //
+        //
+        //
+        //
+        //   ],
+        // )
+        // )
 
       ],
 
@@ -137,6 +147,9 @@ Widget analysisReporting(BuildContext context, int index ,List<Map<dynamic, dyna
   return GestureDetector(
     onTap: () {
       print(index.toString() + "번의 분석 보고서가 눌렸습니다.");
+      //postRequest().then((value)=>print(value));
+
+      //보고서 다운로드 루틴
     },
     child: Container(
       padding: EdgeInsets.all(size.height * 0.01),
@@ -152,7 +165,7 @@ Widget analysisReporting(BuildContext context, int index ,List<Map<dynamic, dyna
                 child: Icon(Icons.description)),
             SizedBox(
                 width: size.width * 0.6,
-                child: Text(analysisReport[index]['title'],
+                child: Text("${analysisReport[index]['request_date']} 분석 보고서",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,

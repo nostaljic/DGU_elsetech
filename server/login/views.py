@@ -13,11 +13,12 @@ class RegisterView(View):
     def post(self, request):
         try:
             data = json.loads(request.body)
-            id = data['id']
+            _id = data['id']
             pw = data['pw']
             pw_confirm = data['pw_confirm']
             name = data['name']
             email = data['email']
+            phone = data['phone']
         except KeyError as e:
             print("KeyError 발생", e)
             return JsonResponse(
@@ -30,8 +31,9 @@ class RegisterView(View):
             member = Member(
                 name=name,
                 email=email,
-                id=id,
+                id=_id,
                 pw=pw,
+                phone=phone
             )
             member.save()
             return HttpResponse(status=200)

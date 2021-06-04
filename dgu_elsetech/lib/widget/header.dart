@@ -1,3 +1,4 @@
+import 'package:dgu_elsetech/api/get_analysis_data.dart';
 import 'package:dgu_elsetech/route.dart';
 import 'package:dgu_elsetech/style/color.dart';
 import 'package:dgu_elsetech/style/typography.dart';
@@ -109,10 +110,12 @@ class _CustomHeaderState extends State<CustomHeader> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             onTap: () {
+                              postRequest();
                               Navigator.popUntil(
                                   context,
                                   ModalRoute.withName(
                                       Navigator.defaultRouteName));
+                              Navigator.pushNamed(context, Routes.home);
                             },
                           ),
                           SizedBox(
