@@ -2,30 +2,27 @@ import 'package:dgu_elsetech/model/water.dart';
 import 'package:dgu_elsetech/style/color.dart';
 import 'package:dgu_elsetech/style/typography.dart';
 import 'package:flutter/material.dart';
-class BottomSheetModal extends StatefulWidget {
-  @override
-  _BottomSheetModal createState() => _BottomSheetModal();
-}
-class _BottomSheetModal extends State<BottomSheetModal>{
-  List<Map<String, dynamic>> _water = [
-    {"location": "송파구", "turbidity": 0.08, "chlorine": 0.36, "ph": 6.8}
-  ];
+Map<dynamic, dynamic> surround={
+  "long": 126.734086,
+  "lat": 37.413294,
+  "member_id": "",
+  "request_date": "",
+  "name": "",
+  "water_origin": "",
+  "fe_origin": 0.0,
+  "turbidity": 0.0,
+  "date": 1,
+  "fe_user": 1.0,
+  "mn_user": 0.0,
+  "al_user": 0.0,
+  "img": "",
+  "total": ""
+};
+List<Map<String, dynamic>> water = [
+  {"location": "송파구", "turbidity": 0.08, "chlorine": 0.36, "ph": 6.8}
+];
+class BottomSheetModal extends StatelessWidget{
 
-  Map<String, dynamic> _surround =
-    {
-      "member_id": "test_id",
-      "request_date": "2021-05-20",
-      "name": "박승일",
-      "water_origin": "000 정수장",
-      "fe_origin": 0.0,
-      "turbidity": 0.0,
-      "date": 1,
-      "fe_user": 0.0,
-      "mn_user": 0.0,
-      "al_user": 0.0,
-      "img": "이미지 URL",
-      "total": "경고/ 안전"
-    };
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -42,8 +39,8 @@ class _BottomSheetModal extends State<BottomSheetModal>{
                 borderRadius: BorderRadius.all(Radius.circular(10)))
         ),
         SizedBox(height: height * 0.05),
-        _publicData(context, width, true, _water),
-        _surroundingData(context, width, _surround),
+        _publicData(context, width, true, water),
+        _surroundingData(context, width, surround),
       ],
     );
   }
@@ -54,7 +51,7 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
     padding: EdgeInsets.only(left: width * 0.12),
     width: width,
     child:
-        Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+    Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
       Text(good == true ? "마시기 적합" : "마시기 부적합",
           style: good == true ? mainBlue : mainRed),
       SizedBox(height: 15),
