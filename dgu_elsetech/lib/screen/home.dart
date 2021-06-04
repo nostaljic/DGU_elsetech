@@ -8,70 +8,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:dgu_elsetech/api/get_analysis_data.dart';
 import 'package:dgu_elsetech/widget/box_decoration.dart';
 
-final List<Map<String, dynamic>> water = [
-  {"location": "남동구", "turbidity": 0.06, "chlorine": 0.35, "ph": 6.5},
-  {"location": "동작구", "turbidity": 0.07, "chlorine": 0.36, "ph": 6.8},
-  {"location": "송파구", "turbidity": 0.08, "chlorine": 0.37, "ph": 7.0},
-];
-final List<Map<dynamic, dynamic>> marker_info = [
-  {
-    "public_ph": 0.3,
-    "public_rc": 0.4,
-    "public_tb": 0.5,
-    "long": 127.0317674,
-    "lat": 37.6658609,
-    "member_id": "test_id",
-    "request_date": "2021-05-20",
-    "name": "박승일",
-    "water_origin": "000 정수장",
-    "fe_origin": 0.0,
-    "turbidity": 0.0,
-    "date": 1,
-    "fe_user": 1.0,
-    "mn_user": 0.0,
-    "al_user": 0.0,
-    "img": "이미지 URL",
-    "total": "경고"
-  },
-  {
-    "public_ph": 0.3,
-    "public_rc": 0.4,
-    "public_tb": 0.5,
-    "long": 126.9227004,
-    "lat": 37.6176125,
-    "member_id": "test_id",
-    "request_date": "2021-05-20",
-    "name": "박승일",
-    "water_origin": "000 정수장",
-    "fe_origin": 0.0,
-    "turbidity": 0.0,
-    "date": 1,
-    "fe_user": 0.0,
-    "mn_user": 2.0,
-    "al_user": 0.0,
-    "img": "이미지 URL",
-    "total": "안전"
-  },
-  {
-    "public_ph": 0.3,
-    "public_rc": 0.7,
-    "public_tb": 0.5,
-    "long": 126.834086,
-    "lat": 37.412294,
-    "member_id": "test_id",
-    "request_date": "2021-05-20",
-    "name": "박승일",
-    "water_origin": "000 정수장",
-    "fe_origin": 0.0,
-    "turbidity": 0.0,
-    "date": 1,
-    "fe_user": 0.0,
-    "mn_user": 0.0,
-    "al_user": 3.0,
-    "img": "이미지 URL",
-    "total": "경고"
-  },
-];
+
 
 class Home extends StatefulWidget {
   @override
@@ -80,6 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   //var a =postRequest();
+
   Set<Marker> _createMarker(markers) {
     Set<Marker> _Marker = {};
 
@@ -87,8 +25,8 @@ class _HomeState extends State<Home> {
     var _kMapCenter;
 
     for (int i = 0; i < markers.length; i++) {
-      long = markers[i]['long'];
-      lat = markers[i]['lat'];
+      long = markers[i]['longitude'];
+      lat = markers[i]['latitude'];
       waterState = markers[i]['total'] == '안전' ? true : false;
       total = markers[i]['total'];
       print(long);
@@ -112,23 +50,6 @@ class _HomeState extends State<Home> {
     return _Marker;
   }
 
-  Map<dynamic, dynamic> mk = {
-    "long": 126.734086,
-    "lat": 37.413294,
-    "member_id": "test_id",
-    "request_date": "2021-05-20",
-    "name": "박일",
-    "water_origin": "000 정수장",
-    "fe_origin": 0.0,
-    "turbidity": 0.0,
-    "date": 1,
-    "fe_user": 1.0,
-    "mn_user": 0.0,
-    "al_user": 0.0,
-    "img": "이미지 URL",
-    "total": "경고"
-  };
-
   Future<Position> getLocation() async {
     Position position =
         // ignore: deprecated_member_use
@@ -140,6 +61,7 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
+    postRequest();
     super.initState();
   }
 

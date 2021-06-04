@@ -25,8 +25,36 @@ class RegisterView(View):
                 {'message': '잘못된 정보'},
                 content_type=u"application/json; charset=utf-8",
                 status=400
-                )
+            )
 
+        if pw == pw_confirm:
+            member = Member(
+                name=name,
+                email=email,
+                id=_id,
+                pw=pw,
+                phone=phone
+            )
+            member.save()
+            return HttpResponse(status=200)
+        return HttpResponse(status=400)
+
+    def get(self, request):
+        try:
+            _id = request.GET.get('id')
+            pw = request.GET.get('pw')
+            pw_confirm = request.GET.get('pw_confirm')
+            name = request.GET.get('name')
+            email = request.GET.get('email')
+            phone = request.GET.get('phone')
+
+        except KeyError as e:
+            print("KeyError 발생", e)
+            return JsonResponse(
+                {'message': '잘못된 정보'},
+                content_type=u"application/json; charset=utf-8",
+                status=400
+            )
         if pw == pw_confirm:
             member = Member(
                 name=name,
@@ -48,6 +76,23 @@ class LoginView(View):
             if Member.objects.filter(id=data['id']).exists():
                 member = Member.objects.get(id=data['id'])
                 if member.pw == data['pw']:
+                    return HttpResponse(status=200)
+                return HttpResponse(status=401)
+            return HttpResponse(status=400)
+
+        except KeyError as e:
+            print("KeyError 발생", e)
+            return JsonResponse(
+                {'message': '잘못된 로그인'},
+                content_type=u"application/json; charset=utf-8",
+                status=400
+            )
+
+    def get(self, request):
+        try:
+            if Member.objects.filter(id=request.GET.get('id')).exists():
+                member = Member.objects.get(id=request.GET.get('id'))
+                if member.pw == request.GET.get('pw'):
                     return HttpResponse(status=200)
                 return HttpResponse(status=401)
             return HttpResponse(status=400)
