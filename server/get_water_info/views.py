@@ -53,7 +53,6 @@ class InfoView(View):
                 status=400
             )
 
-
 @method_decorator(csrf_exempt, name='dispatch')
 class GetExcelView(View):
     def get(self, request):

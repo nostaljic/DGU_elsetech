@@ -15,10 +15,9 @@ final List<Map<String, dynamic>> water = [
 ];
 final List<Map<dynamic, dynamic>> marker_info = [
   {
-    "public_ph":0.3,
-    "public_rc":0.4,
-    "public_tb":0.5,
-
+    "public_ph": 0.3,
+    "public_rc": 0.4,
+    "public_tb": 0.5,
     "long": 127.0317674,
     "lat": 37.6658609,
     "member_id": "test_id",
@@ -35,10 +34,9 @@ final List<Map<dynamic, dynamic>> marker_info = [
     "total": "경고"
   },
   {
-    "public_ph":0.3,
-    "public_rc":0.4,
-    "public_tb":0.5,
-
+    "public_ph": 0.3,
+    "public_rc": 0.4,
+    "public_tb": 0.5,
     "long": 126.9227004,
     "lat": 37.6176125,
     "member_id": "test_id",
@@ -55,10 +53,9 @@ final List<Map<dynamic, dynamic>> marker_info = [
     "total": "안전"
   },
   {
-    "public_ph":0.3,
-    "public_rc":0.7,
-    "public_tb":0.5,
-
+    "public_ph": 0.3,
+    "public_rc": 0.7,
+    "public_tb": 0.5,
     "long": 126.834086,
     "lat": 37.412294,
     "member_id": "test_id",
@@ -83,40 +80,38 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   //var a =postRequest();
-  Set<Marker> _createMarker(markers){
-
-    Set<Marker> _Marker={};
+  Set<Marker> _createMarker(markers) {
+    Set<Marker> _Marker = {};
 
     var lat, long, waterState, total;
     var _kMapCenter;
 
-    for(int i=0;i<markers.length;i++){
-
+    for (int i = 0; i < markers.length; i++) {
       long = markers[i]['long'];
       lat = markers[i]['lat'];
-      waterState = markers[i]['total']=='안전'?true:false;
-      total= markers[i]['total'];
-      print(long);print(lat);print(waterState);
-      _kMapCenter = LatLng(lat,long);
-      _Marker.add(
-          Marker(
-              markerId: MarkerId("${i}" + markers[i]['request_date']),
-              position: _kMapCenter,
-              icon:BitmapDescriptor.fromAsset(waterState? 'assets/sizuku.png':'assets/dirty_sizuku.png'),
-              infoWindow: InfoWindow(title:total),
-              onTap:(){
-                print(i);
-                //setState(() {
-                  surround = marker_info[i];
-                //});
-              }
-          )
-      );
+      waterState = markers[i]['total'] == '안전' ? true : false;
+      total = markers[i]['total'];
+      print(long);
+      print(lat);
+      print(waterState);
+      _kMapCenter = LatLng(lat, long);
+      _Marker.add(Marker(
+          markerId: MarkerId("${i}" + markers[i]['request_date']),
+          position: _kMapCenter,
+          icon: BitmapDescriptor.fromAsset(
+              waterState ? 'assets/sizuku.png' : 'assets/dirty_sizuku.png'),
+          infoWindow: InfoWindow(title: total),
+          onTap: () {
+            print(i);
+            //setState(() {
+            surround = marker_info[i];
+            //});
+          }));
     }
-
 
     return _Marker;
   }
+
   Map<dynamic, dynamic> mk = {
     "long": 126.734086,
     "lat": 37.413294,
@@ -143,11 +138,9 @@ class _HomeState extends State<Home> {
 
   Completer<GoogleMapController> _controller = Completer();
 
-
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -185,7 +178,7 @@ class _HomeState extends State<Home> {
                             initialCameraPosition: nowLoc,
                             onMapCreated: (GoogleMapController controller) {
                               _controller.complete(controller);
-                              },
+                            },
                             markers: _createMarker(marker_info),
                             compassEnabled: true,
                             zoomGesturesEnabled: true,

@@ -2,11 +2,11 @@ import 'package:dgu_elsetech/model/water.dart';
 import 'package:dgu_elsetech/style/color.dart';
 import 'package:dgu_elsetech/style/typography.dart';
 import 'package:flutter/material.dart';
-Map<dynamic, dynamic> surround={
-  "public_ph":0.0,
-  "public_rc":0.0,
-  "public_tb":0.0,
 
+Map<dynamic, dynamic> surround = {
+  "public_ph": 0.0,
+  "public_rc": 0.0,
+  "public_tb": 0.0,
   "long": 126.9227004,
   "lat": 37.6176125,
   "member_id": "",
@@ -23,8 +23,7 @@ Map<dynamic, dynamic> surround={
   "total": ""
 };
 
-class BottomSheetModal extends StatelessWidget{
-
+class BottomSheetModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -38,8 +37,7 @@ class BottomSheetModal extends StatelessWidget{
             height: height * 0.01,
             decoration: BoxDecoration(
                 color: themeBlue,
-                borderRadius: BorderRadius.all(Radius.circular(10)))
-        ),
+                borderRadius: BorderRadius.all(Radius.circular(10)))),
         SizedBox(height: height * 0.05),
         _publicData(context, width, true, surround),
         _surroundingData(context, width, surround),
@@ -48,13 +46,14 @@ class BottomSheetModal extends StatelessWidget{
   }
 }
 
-Widget _publicData(BuildContext context, double width, bool good, Map<dynamic,dynamic> _water) {
+Widget _publicData(BuildContext context, double width, bool good,
+    Map<dynamic, dynamic> _water) {
   return Container(
     padding: EdgeInsets.only(left: width * 0.12),
     width: width,
     child:
-    Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-      Text("공공 데이터",style:  mainBlue ),
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+      Text("공공 데이터", style: mainBlue),
       SizedBox(height: 15),
       Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +61,7 @@ Widget _publicData(BuildContext context, double width, bool good, Map<dynamic,dy
           Container(
             width: width * 0.25,
             height: width * 0.25,
-            child:SizedBox(
+            child: SizedBox(
               //width: width*0.5,
               child: Image.asset("assets/water_smile.png"),
             ),
@@ -180,7 +179,7 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                 BoxShadow(color: Colors.grey, spreadRadius: 1),
               ],
             ),
-            child:Column(
+            child: Column(
               children: [
                 Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
@@ -201,11 +200,11 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                             style: _surround["mn_user"] == 0.0
                                 ? mainBlue
                                 : mainRed),
-
-
                       ],
                     )),
-                Container(height:20,),
+                Container(
+                  height: 20,
+                ),
                 Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
@@ -225,11 +224,11 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                             style: _surround["fe_user"] == 0.0
                                 ? mainBlue
                                 : mainRed),
-
-
                       ],
                     )),
-                Container(height:20,),
+                Container(
+                  height: 20,
+                ),
                 Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
@@ -249,13 +248,12 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                             style: _surround["al_user"] == 0.0
                                 ? mainBlue
                                 : mainRed),
-
-
                       ],
                     )),
-                Container(height:20,),
                 Container(
-
+                  height: 20,
+                ),
+                Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -276,8 +274,6 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                                 style: _surround["mn_user"] == 0.0
                                     ? mainBlue
                                     : mainRed),
-
-
                           ],
                         ),
                         Row(
@@ -291,8 +287,6 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                                 style: _surround["fe_user"] == 0.0
                                     ? mainBlue
                                     : mainRed),
-
-
                           ],
                         ),
                         Row(
@@ -306,13 +300,10 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                                 style: _surround["al_user"] == 0.0
                                     ? mainBlue
                                     : mainRed),
-
-
                           ],
                         ),
                       ],
                     )),
-
               ],
             ),
             // child: ListView.separated(
