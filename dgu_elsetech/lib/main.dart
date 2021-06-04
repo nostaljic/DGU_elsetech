@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.of(context).pushNamed(Routes.welcome);
+    Navigator.of(context).pushReplacementNamed(Routes.welcome);
   }
 
   @override
