@@ -58,3 +58,43 @@ class AnalysisRequestView(View):
         )
         a_req.save()
         return HttpResponse(status=200)
+
+
+    def get(self, request):
+        try:
+            member_id = request.GET.get('member_id')
+            member_id = Member.objects.get(pk=member_id)
+
+            location = request.GET.get('location')
+            water_model = request.GET.get('water_model')
+            company_name = request.GET.get('company_name')
+            num_people = request.GET.get('num_people')
+            usage = request.GET.get('usage')
+
+            request_date = request.GET.get('request_date')
+            # request_date = datetime.datetime.strptime(request_date, "%Y-%m-%d").date()
+            start_date = request.GET.get('start_date')
+            # start_date = datetime.datetime.strptime(start_date, "%Y-%m-%d").date()
+            end_date = request.GET.get('end_date')
+            # end_date = datetime.datetime.strptime(end_date, "%Y-%m-%d").date()
+
+        except KeyError as e:
+            print("KeyError 발생", e)
+            return JsonResponse(
+                {'message': '잘못된 정보'},
+                content_type=u"application/json; charset=utf-8",
+                status=400
+            )
+        a_req = AnalysisRequest(
+            member_id=member_id,
+            request_date=request_date,
+            location=location,
+            water_model=water_model,
+            company_name=company_name,
+            start_date=start_date,
+            end_date=end_date,
+            num_people=num_people,
+            usage=usage,
+        )
+        a_req.save()
+        return HttpResponse(status=200)

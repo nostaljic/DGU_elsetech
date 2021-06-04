@@ -2,30 +2,28 @@ import 'package:dgu_elsetech/model/water.dart';
 import 'package:dgu_elsetech/style/color.dart';
 import 'package:dgu_elsetech/style/typography.dart';
 import 'package:flutter/material.dart';
-class BottomSheetModal extends StatefulWidget {
-  @override
-  _BottomSheetModal createState() => _BottomSheetModal();
-}
-class _BottomSheetModal extends State<BottomSheetModal>{
-  List<Map<String, dynamic>> _water = [
-    {"location": "송파구", "turbidity": 0.08, "chlorine": 0.36, "ph": 6.8}
-  ];
 
-  Map<String, dynamic> _surround =
-    {
-      "member_id": "test_id",
-      "request_date": "2021-05-20",
-      "name": "박승일",
-      "water_origin": "000 정수장",
-      "fe_origin": 0.0,
-      "turbidity": 0.0,
-      "date": 1,
-      "fe_user": 0.0,
-      "mn_user": 0.0,
-      "al_user": 0.0,
-      "img": "이미지 URL",
-      "total": "경고/ 안전"
-    };
+Map<dynamic, dynamic> surround = {
+  "public_ph": 0.0,
+  "public_rc": 0.0,
+  "public_tb": 0.0,
+  "long": 126.9227004,
+  "lat": 37.6176125,
+  "member_id": "",
+  "request_date": "",
+  "name": "",
+  "water_origin": "",
+  "fe_origin": 0.0,
+  "turbidity": 0.0,
+  "date": 0,
+  "fe_user": 0.0,
+  "mn_user": 0.0,
+  "al_user": 0.0,
+  "img": "",
+  "total": ""
+};
+
+class BottomSheetModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -39,24 +37,23 @@ class _BottomSheetModal extends State<BottomSheetModal>{
             height: height * 0.01,
             decoration: BoxDecoration(
                 color: themeBlue,
-                borderRadius: BorderRadius.all(Radius.circular(10)))
-        ),
+                borderRadius: BorderRadius.all(Radius.circular(10)))),
         SizedBox(height: height * 0.05),
-        _publicData(context, width, true, _water),
-        _surroundingData(context, width, _surround),
+        _publicData(context, width, true, surround),
+        _surroundingData(context, width, surround),
       ],
     );
   }
 }
 
-Widget _publicData(BuildContext context, double width, bool good, List _water) {
+Widget _publicData(BuildContext context, double width, bool good,
+    Map<dynamic, dynamic> _water) {
   return Container(
     padding: EdgeInsets.only(left: width * 0.12),
     width: width,
     child:
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-      Text(good == true ? "마시기 적합" : "마시기 부적합",
-          style: good == true ? mainBlue : mainRed),
+      Text("공공 데이터", style: mainBlue),
       SizedBox(height: 15),
       Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,9 +61,9 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
           Container(
             width: width * 0.25,
             height: width * 0.25,
-            child:SizedBox(
+            child: SizedBox(
               //width: width*0.5,
-              child: good == true ?Image.asset("assets/water_smile.png"):Image.asset("assets/elsetech_logo.png"),
+              child: Image.asset("assets/water_smile.png"),
             ),
             //color: good == true ? Colors.blue : Colors.red,
           ),
@@ -79,7 +76,7 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
                 children: <Widget>[
                   Text("-탁도:", style: subBlack),
                   SizedBox(width: 43),
-                  Text(_water[0]["turbidity"].toString() + " NTU",
+                  Text(_water["public_tb"].toString() + " NTU",
                       style: subBlack),
                 ],
               ),
@@ -88,7 +85,7 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
                 children: <Widget>[
                   Text("-잔류염소:", style: subBlack),
                   SizedBox(width: 15),
-                  Text(_water[0]["chlorine"].toString() + " mg/L",
+                  Text(_water["public_rc"].toString() + " mg/L",
                       style: subBlack),
                 ],
               ),
@@ -97,7 +94,7 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
                 children: <Widget>[
                   Text("-pH:", style: subBlack),
                   SizedBox(width: 53),
-                  Text(_water[0]["ph"].toString(), style: subBlack),
+                  Text(_water["public_ph"].toString(), style: subBlack),
                 ],
               ),
               SizedBox(height: 40),
@@ -182,7 +179,7 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                 BoxShadow(color: Colors.grey, spreadRadius: 1),
               ],
             ),
-            child:Column(
+            child: Column(
               children: [
                 Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
@@ -203,11 +200,11 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                             style: _surround["mn_user"] == 0.0
                                 ? mainBlue
                                 : mainRed),
-                        Text("_surround"),
-
                       ],
                     )),
-                Container(height:20,),
+                Container(
+                  height: 20,
+                ),
                 Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
@@ -227,11 +224,11 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                             style: _surround["fe_user"] == 0.0
                                 ? mainBlue
                                 : mainRed),
-                        Text("_surround"),
-
                       ],
                     )),
-                Container(height:20,),
+                Container(
+                  height: 20,
+                ),
                 Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
@@ -251,13 +248,12 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                             style: _surround["al_user"] == 0.0
                                 ? mainBlue
                                 : mainRed),
-                        Text("_surround"),
-
                       ],
                     )),
-                Container(height:20,),
                 Container(
-
+                  height: 20,
+                ),
+                Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -278,8 +274,6 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                                 style: _surround["mn_user"] == 0.0
                                     ? mainBlue
                                     : mainRed),
-
-
                           ],
                         ),
                         Row(
@@ -293,8 +287,6 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                                 style: _surround["fe_user"] == 0.0
                                     ? mainBlue
                                     : mainRed),
-
-
                           ],
                         ),
                         Row(
@@ -308,13 +300,10 @@ Widget _surroundingData(BuildContext context, double width, Map _surround) {
                                 style: _surround["al_user"] == 0.0
                                     ? mainBlue
                                     : mainRed),
-
-
                           ],
                         ),
                       ],
                     )),
-
               ],
             ),
             // child: ListView.separated(

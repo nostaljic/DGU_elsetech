@@ -8,35 +8,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:dgu_elsetech/api/get_analysis_data.dart';
 import 'package:dgu_elsetech/widget/box_decoration.dart';
 
-Set<Marker> _createMarker(markers){
 
-  Set<Marker> _Marker={};
-
-  var lat, long, waterState, address;
-  var _kMapCenter;
-
-  for(int i=0;i<markers.length;i++){
-
-    long = markers[i]['long'];
-    lat = markers[i]['lat'];
-    waterState = markers[i]['total']=='안전'?true:false;
-    address= markers[i]['total'];
-    print(long);print(lat);print(waterState);
-    _kMapCenter = LatLng(lat,long);
-    _Marker.add(
-        Marker(
-          markerId: MarkerId("${i}" + markers[i]['request_date']),
-          position: _kMapCenter,
-          icon:BitmapDescriptor.fromAsset(waterState? 'assets/sizuku.png':'assets/dirty_sizuku.png'),
-          infoWindow: InfoWindow(title:address),
-
-        )
-    );
-  }
-
-
-  return _Marker;
-}
 
 class Home extends StatefulWidget {
   @override
@@ -46,40 +18,38 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   //var a =postRequest();
 
-  final List<Map<dynamic, dynamic>> marker_info = [
-    {
-      "long": 126.734086,
-      "lat": 37.413294,
-      "member_id": "test_id",
-      "request_date": "2021-05-20",
-      "name": "박승일",
-      "water_origin": "000 정수장",
-      "fe_origin": 0.0,
-      "turbidity": 0.0,
-      "date": 1,
-      "fe_user": 0.0,
-      "mn_user": 0.0,
-      "al_user": 0.0,
-      "img": "이미지 URL",
-      "total": "경고"
-    },
-    {
-      "long": 127.639311,
-      "lat": 37.411294,
-      "member_id": "test_id",
-      "request_date": "2021-05-20",
-      "name": "박승일",
-      "water_origin": "000 정수장",
-      "fe_origin": 0.0,
-      "turbidity": 0.0,
-      "date": 1,
-      "fe_user": 0.0,
-      "mn_user": 0.0,
-      "al_user": 0.0,
-      "img": "이미지 URL",
-      "total": "안전"
-    },
-  ];
+  Set<Marker> _createMarker(markers) {
+    Set<Marker> _Marker = {};
+
+    var lat, long, waterState, total;
+    var _kMapCenter;
+
+    for (int i = 0; i < markers.length; i++) {
+      long = markers[i]['longitude'];
+      lat = markers[i]['latitude'];
+      waterState = markers[i]['total'] == '안전' ? true : false;
+      total = markers[i]['total'];
+      print(long);
+      print(lat);
+      print(waterState);
+      _kMapCenter = LatLng(lat, long);
+      _Marker.add(Marker(
+          markerId: MarkerId("${i}" + markers[i]['request_date']),
+          position: _kMapCenter,
+          icon: BitmapDescriptor.fromAsset(
+              waterState ? 'assets/sizuku.png' : 'assets/dirty_sizuku.png'),
+          infoWindow: InfoWindow(title: total),
+          onTap: () {
+            print(i);
+            //setState(() {
+            surround = marker_info[i];
+            //});
+          }));
+    }
+
+    return _Marker;
+  }
+
   Future<Position> getLocation() async {
     Position position =
         // ignore: deprecated_member_use
@@ -89,11 +59,10 @@ class _HomeState extends State<Home> {
 
   Completer<GoogleMapController> _controller = Completer();
 
-
   @override
   void initState() {
+    postRequest();
     super.initState();
-
   }
 
   @override
@@ -131,7 +100,7 @@ class _HomeState extends State<Home> {
                             initialCameraPosition: nowLoc,
                             onMapCreated: (GoogleMapController controller) {
                               _controller.complete(controller);
-                              },
+                            },
                             markers: _createMarker(marker_info),
                             compassEnabled: true,
                             zoomGesturesEnabled: true,
