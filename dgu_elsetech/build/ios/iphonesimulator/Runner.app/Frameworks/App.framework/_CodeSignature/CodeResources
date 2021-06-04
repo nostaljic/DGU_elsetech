@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		zcpHGE+5/GsJ7c75xcuxkLiirEs=
+		mu99e5ZP1kib1VFu17HRoYRxh30=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -18,27 +18,35 @@
 		</data>
 		<key>flutter_assets/NOTICES</key>
 		<data>
-		CEjWzedAlpUbzCGIZf2JEPH2jXk=
+		os1DBbQztR21o5N+W3uKigGNK+A=
+		</data>
+		<key>flutter_assets/assets/dirty_sizuku.png</key>
+		<data>
+		pdZiMif0En6ZH6hhKjANvSfaZGE=
 		</data>
 		<key>flutter_assets/assets/elsetech_logo.png</key>
 		<data>
-		zc9BrgzJa79vpfxUpIqLdiwZ67Q=
+		EzXe2u35t+wm3X+pYzqBUe41tqw=
 		</data>
 		<key>flutter_assets/assets/menu_close.svg</key>
 		<data>
 		miuH6ENFta64+uocd0w4CiTeyPE=
 		</data>
+		<key>flutter_assets/assets/sizuku.png</key>
+		<data>
+		x5EEzmE1IesG8NM5/iSKo60qHJM=
+		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
-		XxTTbEdqMMr+614Mzm3EJYMaT9I=
+		33xe6rFwPlxRnZOgZWsODADpUI4=
 		</data>
 		<key>flutter_assets/isolate_snapshot_data</key>
 		<data>
-		Bpo1zYxnMKgIDCWmW6QiktUBjH4=
+		ELluN2aQ5lXx4NZnJlBUXyZEfGo=
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		xZ8a2e3II8+HWBUsbWjHpUo14W4=
+		Y9j9tLlog/FbsMPuSQ4ziO0k67I=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -46,7 +54,7 @@
 		</data>
 		<key>flutter_assets/vm_snapshot_data</key>
 		<data>
-		48wiuHnlzYQvo/HpvV8dQ6OhATs=
+		BICKLyZmEDX0yMJrQwYDz3tKwt8=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -55,11 +63,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zcpHGE+5/GsJ7c75xcuxkLiirEs=
+			mu99e5ZP1kib1VFu17HRoYRxh30=
 			</data>
 			<key>hash2</key>
 			<data>
-			k5P74Z21N1KSeX44Qp9EclPBhQCMLio5iKSi19+SRmE=
+			FgEKij1Vo8frUu5Roo0jjsD26mHH9JeQYEbm/QB9i60=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -77,22 +85,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CEjWzedAlpUbzCGIZf2JEPH2jXk=
+			os1DBbQztR21o5N+W3uKigGNK+A=
 			</data>
 			<key>hash2</key>
 			<data>
-			XxRfd0CPtlMY/HFAXXIgpPgkzYGkYZY8FXTX9Et+Y/U=
+			KhyZOf9Y+x4499Qx/0xpgPkr08DkrBehzrRCi8CxUr8=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/dirty_sizuku.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pdZiMif0En6ZH6hhKjANvSfaZGE=
+			</data>
+			<key>hash2</key>
+			<data>
+			Gs/NozBSfy8aTDOYs14u866kVkbSVDGITMIdzX+BImY=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/elsetech_logo.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zc9BrgzJa79vpfxUpIqLdiwZ67Q=
+			EzXe2u35t+wm3X+pYzqBUe41tqw=
 			</data>
 			<key>hash2</key>
 			<data>
-			a4xvq8K9jSqjLWeekJOpTBQA69IV+XIxEp7GY2WWFZY=
+			rvAKCHdFZXaWGNr/BKu7WLemBjWkC193aM8XgZZBtsg=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/menu_close.svg</key>
@@ -106,37 +125,48 @@
 			Dvy5DVDDMC4F6vX2UuDKm/lkH5D7/tCtwkQ/h6nAfOs=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/sizuku.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			x5EEzmE1IesG8NM5/iSKo60qHJM=
+			</data>
+			<key>hash2</key>
+			<data>
+			TL0qqQk2xcNJe/WmDO3uyzXMVDKSfDb40Gx4RZgJA9s=
+			</data>
+		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XxTTbEdqMMr+614Mzm3EJYMaT9I=
+			33xe6rFwPlxRnZOgZWsODADpUI4=
 			</data>
 			<key>hash2</key>
 			<data>
-			Nt7OTUXA/dkAWXOmvWbTlkJLC1yvAxfCcd3OIaLWdQQ=
+			0E0I/gLatnGI9y4elyWPSg2LWYJSPgLt6hMvgJD5+rQ=
 			</data>
 		</dict>
 		<key>flutter_assets/isolate_snapshot_data</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Bpo1zYxnMKgIDCWmW6QiktUBjH4=
+			ELluN2aQ5lXx4NZnJlBUXyZEfGo=
 			</data>
 			<key>hash2</key>
 			<data>
-			xVuz4hk5MOtTK7YB7/MDWXzPS9nF2Z5Gg4AFH3630rY=
+			d5Zhq5S+3ylGF8osqx2M/nYmzI/1w4FDUIjGiKWFaOc=
 			</data>
 		</dict>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xZ8a2e3II8+HWBUsbWjHpUo14W4=
+			Y9j9tLlog/FbsMPuSQ4ziO0k67I=
 			</data>
 			<key>hash2</key>
 			<data>
-			/gG0bBnhpPHTUCQXTgWp/21JieC6L1XxmznHV1NBmFA=
+			P9HemGdlcPYkgUQ/SRSEPA0fYh/RLh7z5We7vRRs9RU=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -154,11 +184,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			48wiuHnlzYQvo/HpvV8dQ6OhATs=
+			BICKLyZmEDX0yMJrQwYDz3tKwt8=
 			</data>
 			<key>hash2</key>
 			<data>
-			Fh95LadxcIxjVY+f6VA3HDyGtA7vGGUACjhlQBemy+c=
+			dW/lW8/DGE7kqgVOIL22hio/M/WrH8+bodAoyvhyXsU=
 			</data>
 		</dict>
 	</dict>

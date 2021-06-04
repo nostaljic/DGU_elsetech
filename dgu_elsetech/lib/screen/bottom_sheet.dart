@@ -2,17 +2,29 @@ import 'package:dgu_elsetech/model/water.dart';
 import 'package:dgu_elsetech/style/color.dart';
 import 'package:dgu_elsetech/style/typography.dart';
 import 'package:flutter/material.dart';
+Map<dynamic, dynamic> surround={
+  "public_ph":0.0,
+  "public_rc":0.0,
+  "public_tb":0.0,
 
-class BottomSheetModal extends StatelessWidget {
-  List<Map<String, dynamic>> _water = [
-    {"location": "송파구", "turbidity": 0.08, "chlorine": 0.36, "ph": 6.8}
-  ];
+  "long": 126.9227004,
+  "lat": 37.6176125,
+  "member_id": "",
+  "request_date": "",
+  "name": "",
+  "water_origin": "",
+  "fe_origin": 0.0,
+  "turbidity": 0.0,
+  "date": 0,
+  "fe_user": 0.0,
+  "mn_user": 0.0,
+  "al_user": 0.0,
+  "img": "",
+  "total": ""
+};
 
-  List<Map<String, dynamic>> _surround = [
-    {"good": true, "distance": "100m"},
-    {"good": false, "distance": "140m"},
-    {"good": true, "distance": "200m"},
-  ];
+class BottomSheetModal extends StatelessWidget{
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -26,23 +38,23 @@ class BottomSheetModal extends StatelessWidget {
             height: height * 0.01,
             decoration: BoxDecoration(
                 color: themeBlue,
-                borderRadius: BorderRadius.all(Radius.circular(10)))),
+                borderRadius: BorderRadius.all(Radius.circular(10)))
+        ),
         SizedBox(height: height * 0.05),
-        _publicData(context, width, true, _water),
-        _surroundingData(context, width, _surround),
+        _publicData(context, width, true, surround),
+        _surroundingData(context, width, surround),
       ],
     );
   }
 }
 
-Widget _publicData(BuildContext context, double width, bool good, List _water) {
+Widget _publicData(BuildContext context, double width, bool good, Map<dynamic,dynamic> _water) {
   return Container(
     padding: EdgeInsets.only(left: width * 0.12),
     width: width,
     child:
-        Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-      Text(good == true ? "마시기 적합" : "마시기 부적합",
-          style: good == true ? mainBlue : mainRed),
+    Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+      Text("공공 데이터",style:  mainBlue ),
       SizedBox(height: 15),
       Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +62,11 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
           Container(
             width: width * 0.25,
             height: width * 0.25,
-            color: good == true ? Colors.blue : Colors.red,
+            child:SizedBox(
+              //width: width*0.5,
+              child: Image.asset("assets/water_smile.png"),
+            ),
+            //color: good == true ? Colors.blue : Colors.red,
           ),
           SizedBox(width: width * 0.05),
           Column(
@@ -61,7 +77,7 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
                 children: <Widget>[
                   Text("-탁도:", style: subBlack),
                   SizedBox(width: 43),
-                  Text(_water[0]["turbidity"].toString() + " NTU",
+                  Text(_water["public_tb"].toString() + " NTU",
                       style: subBlack),
                 ],
               ),
@@ -70,7 +86,7 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
                 children: <Widget>[
                   Text("-잔류염소:", style: subBlack),
                   SizedBox(width: 15),
-                  Text(_water[0]["chlorine"].toString() + " mg/L",
+                  Text(_water["public_rc"].toString() + " mg/L",
                       style: subBlack),
                 ],
               ),
@@ -79,7 +95,7 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
                 children: <Widget>[
                   Text("-pH:", style: subBlack),
                   SizedBox(width: 53),
-                  Text(_water[0]["ph"].toString(), style: subBlack),
+                  Text(_water["public_ph"].toString(), style: subBlack),
                 ],
               ),
               SizedBox(height: 40),
@@ -87,65 +103,68 @@ Widget _publicData(BuildContext context, double width, bool good, List _water) {
           ),
         ],
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(left: 5, right: 5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(color: Colors.grey, spreadRadius: 1),
-              ],
-            ),
-            child: Text("수질정보"),
-          ),
-          SizedBox(width: 5),
-          Container(
-            padding: EdgeInsets.only(left: 5, right: 5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(color: Colors.grey, spreadRadius: 1),
-              ],
-            ),
-            child: Text("공급경로"),
-          ),
-          SizedBox(width: 5),
-          Container(
-            padding: EdgeInsets.only(left: 5, right: 5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(color: Colors.grey, spreadRadius: 1),
-              ],
-            ),
-            child: Text("단수정보"),
-          ),
-          SizedBox(width: 5),
-          Container(
-            padding: EdgeInsets.only(left: 5, right: 5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(color: Colors.grey, spreadRadius: 1),
-              ],
-            ),
-            child: Text("관할 사업소"),
-          )
-        ],
-      ),
+      // Row(
+      //   mainAxisAlignment: MainAxisAlignment.start,
+      //   crossAxisAlignment: CrossAxisAlignment.start,
+      //   children: <Widget>[
+      //     Container(
+      //       padding: EdgeInsets.only(left: 5, right: 5),
+      //       decoration: BoxDecoration(
+      //         borderRadius: BorderRadius.all(Radius.circular(5)),
+      //         color: Colors.white,
+      //         boxShadow: [
+      //           BoxShadow(color: Colors.grey, spreadRadius: 1),
+      //         ],
+      //       ),
+      //       child: Text("수질정보"),
+      //     ),
+      //     SizedBox(width: 5),
+      //     Container(
+      //       padding: EdgeInsets.only(left: 5, right: 5),
+      //       decoration: BoxDecoration(
+      //         borderRadius: BorderRadius.all(Radius.circular(5)),
+      //         color: Colors.white,
+      //         boxShadow: [
+      //           BoxShadow(color: Colors.grey, spreadRadius: 1),
+      //         ],
+      //       ),
+      //       child: Text("공급경로"),
+      //     ),
+      //     SizedBox(width: 5),
+      //     Container(
+      //       padding: EdgeInsets.only(left: 5, right: 5),
+      //       decoration: BoxDecoration(
+      //         borderRadius: BorderRadius.all(Radius.circular(5)),
+      //         color: Colors.white,
+      //         boxShadow: [
+      //           BoxShadow(color: Colors.grey, spreadRadius: 1),
+      //         ],
+      //       ),
+      //       child: Text("단수정보"),
+      //     ),
+      //     SizedBox(width: 5),
+      //     Container(
+      //       padding: EdgeInsets.only(left: 5, right: 5),
+      //       decoration: BoxDecoration(
+      //         borderRadius: BorderRadius.all(Radius.circular(5)),
+      //         color: Colors.white,
+      //         boxShadow: [
+      //           BoxShadow(color: Colors.grey, spreadRadius: 1),
+      //         ],
+      //       ),
+      //       child: Text("관할 사업소"),
+      //     )
+      //   ],
+      // ),
       SizedBox(height: 30),
     ]),
   );
 }
 
-Widget _surroundingData(BuildContext context, double width, List _surround) {
+Widget _surroundingData(BuildContext context, double width, Map _surround) {
+  Size screenSize = MediaQuery.of(context).size;
+  double width = screenSize.width;
+  double height = screenSize.height;
   return Container(
       padding: EdgeInsets.only(left: width * 0.12, right: width * 0.12),
       width: width,
@@ -161,37 +180,172 @@ Widget _surroundingData(BuildContext context, double width, List _surround) {
                 BoxShadow(color: Colors.grey, spreadRadius: 1),
               ],
             ),
-            child: ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(
-                      height: 10,
+            child:Column(
+              children: [
+                Container(
+                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(color: Colors.grey, spreadRadius: 1),
+                      ],
                     ),
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: _surround.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(color: Colors.grey, spreadRadius: 1),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          Text(
-                              _surround[index]["good"] == true
-                                  ? "음용에 적합함"
-                                  : "음용에 부적합함",
-                              style: _surround[index]["good"] == true
-                                  ? mainBlue
-                                  : mainRed),
-                          Text(_surround[index]["distance"])
-                        ],
-                      ));
-                }),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                            _surround["mn_user"] == 0.0
+                                ? "망간(Mn) : ${_surround["mn_user"]}"
+                                : "망간(Mn) : ${_surround["mn_user"]}",
+                            style: _surround["mn_user"] == 0.0
+                                ? mainBlue
+                                : mainRed),
+
+
+                      ],
+                    )),
+                Container(height:20,),
+                Container(
+                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(color: Colors.grey, spreadRadius: 1),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                            _surround["fe_user"] == 0.0
+                                ? "철(Fe) : ${_surround["fe_user"]}"
+                                : "철(Fe) : ${_surround["fe_user"]}",
+                            style: _surround["fe_user"] == 0.0
+                                ? mainBlue
+                                : mainRed),
+
+
+                      ],
+                    )),
+                Container(height:20,),
+                Container(
+                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(color: Colors.grey, spreadRadius: 1),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                            _surround["al_user"] == 0.0
+                                ? "알루미늄(Al) : ${_surround["al_user"]}"
+                                : "알루미늄(Al) : ${_surround["al_user"]}",
+                            style: _surround["al_user"] == 0.0
+                                ? mainBlue
+                                : mainRed),
+
+
+                      ],
+                    )),
+                Container(height:20,),
+                Container(
+
+                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(color: Colors.grey, spreadRadius: 1),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Text(
+                                _surround["mn_user"] == 0.0
+                                    ? "망간(Mn) 검출 안전범위."
+                                    : "망간(Mn) 검출 경고범위.",
+                                style: _surround["mn_user"] == 0.0
+                                    ? mainBlue
+                                    : mainRed),
+
+
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Text(
+                                _surround["fe_user"] == 0.0
+                                    ? "철(Fe) 검출 안전범위."
+                                    : "철(Fe) 검출 경고범위.",
+                                style: _surround["fe_user"] == 0.0
+                                    ? mainBlue
+                                    : mainRed),
+
+
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Text(
+                                _surround["al_user"] == 0.0
+                                    ? "알루미늄(Al) 검출 안전범위."
+                                    : "알루미늄(Al) 검출 경고범위.",
+                                style: _surround["al_user"] == 0.0
+                                    ? mainBlue
+                                    : mainRed),
+
+
+                          ],
+                        ),
+                      ],
+                    )),
+
+              ],
+            ),
+            // child: ListView.separated(
+            //     separatorBuilder: (context, index) => SizedBox(
+            //           height: 10,
+            //         ),
+            //     scrollDirection: Axis.vertical,
+            //     shrinkWrap: true,
+            //     itemCount: _surround.length,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return Container(
+            //           padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+            //           decoration: BoxDecoration(
+            //             color: Colors.white,
+            //             boxShadow: [
+            //               BoxShadow(color: Colors.grey, spreadRadius: 1),
+            //             ],
+            //           ),
+            //           child: Row(
+            //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //             crossAxisAlignment: CrossAxisAlignment.end,
+            //             children: <Widget>[
+            //               Text(
+            //                   _surround["mn_user"] == 0.0
+            //                       ? "망간(Mn) : ${_surround["mn_user"]}"
+            //                       : "망간(Mn) : ${_surround["mn_user"]}",
+            //                   style: _surround["mn_user"] == 0.0
+            //                       ? mainBlue
+            //                       : mainRed),
+            //               Text("_surround")
+            //             ],
+            //           ));
+            //     }),
           )
         ],
       ));

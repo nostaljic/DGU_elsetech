@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Routes {
-  static const String home = "/";
+  static const String welcome = "/";
+  static const String home = "home";
   static const String request = "request";
   static const String analysis = "analysis";
   static const String fee = "fee";
+  static const String login = "login";
+  static const String find = "find";
 
   static Route<T> fadeThrough<T>(RouteSettings settings, WidgetBuilder page,
       {int duration = 300}) {
