@@ -15,6 +15,10 @@ final List<Map<String, dynamic>> water = [
 ];
 final List<Map<dynamic, dynamic>> marker_info = [
   {
+    "public_ph":0.3,
+    "public_rc":0.4,
+    "public_tb":0.5,
+
     "long": 127.0317674,
     "lat": 37.6658609,
     "member_id": "test_id",
@@ -31,6 +35,10 @@ final List<Map<dynamic, dynamic>> marker_info = [
     "total": "경고"
   },
   {
+    "public_ph":0.3,
+    "public_rc":0.4,
+    "public_tb":0.5,
+
     "long": 126.9227004,
     "lat": 37.6176125,
     "member_id": "test_id",
@@ -47,6 +55,10 @@ final List<Map<dynamic, dynamic>> marker_info = [
     "total": "안전"
   },
   {
+    "public_ph":0.3,
+    "public_rc":0.7,
+    "public_tb":0.5,
+
     "long": 126.834086,
     "lat": 37.412294,
     "member_id": "test_id",
